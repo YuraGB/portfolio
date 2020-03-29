@@ -2,5 +2,9 @@
   text-align: center;
   color: $secondary; 
   @mixin noSelect; 
-  @mixin OpenSans 30px; 
+  @mixin OpenSans 30px;
+
+  div {
+    display: compact;
+  }
 }
