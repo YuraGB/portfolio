@@ -1,3 +1,4 @@
 .Content {
-
+    max-width: $contentAreaMaxWidth;
+    margin: 0 auto;
 }
