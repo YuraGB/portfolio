@@ -9,12 +9,19 @@ import React from 'react';
 
 import classes from './ContactMe.module.css';
 import Input from "../../components/UI/Input/Input";
+import Button from "../../components/UI/Button/Button";
 
+/**
+ * ContactMeComponent page
+ *
+ * @param {*}props
+ * @return {*} component
+ */
 const ContactMeComponent = (props) => {
     return (
         <article>
             <h1 className='page_title'>Contact Me</h1>
-            <form className={classes.ContactForm}>
+            <form className={classes.ContactForm} onSubmit={(e) => e.preventDefault()}>
                 <Input
                     elementType='textarea'
                     label='Comment'
@@ -39,6 +46,7 @@ const ContactMeComponent = (props) => {
                         name: 'email',
                         placeholder: 'Type your e-mail',
                     }}/>
+                <Button>Send</Button>
             </form>
         </article>
     )

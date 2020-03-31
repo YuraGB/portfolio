@@ -1,18 +1,14 @@
 .Button {
     background-color: transparent;
-    border: none;
-    color: white;
+    color: grey;
+    border-radius: 5px;
+    border: 1px solid grey;
     outline: none;
     cursor: pointer;
     font: inherit;
     padding: 10px;
     margin: 10px;
     font-weight: bold;
-}
-
-.Button:first-of-type {
-    margin-left: 0;
-    padding-left: 0;
 }
 
 .Success {

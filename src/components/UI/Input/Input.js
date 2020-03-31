@@ -5,9 +5,15 @@
  * @copyright 2020
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './Input.module.css';
 
+/**
+ * Input UI component
+ * @param {*} props
+ * @return {*} component
+ */
 const Input = (props) => {
     let inputElement = null;
     const inputClasses = [classes.InputElement];
@@ -46,6 +52,11 @@ const Input = (props) => {
             {inputElement}
         </div>
     )
+};
+
+Input.propTypes = {
+    label: PropTypes.string,
+    elementConfig: PropTypes.object
 };
 
 export default Input;
