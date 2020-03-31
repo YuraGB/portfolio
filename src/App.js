@@ -8,10 +8,10 @@
 import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 
-import classes from './App.module.css';
 import Layout from "./hoc/Layout/Layout";
 import HomePageComponent from "./conteiners/HomePageComponent/HomePageComponent";
 import AboutMeComponent from "./conteiners/AboutMeComponent/AboutMeComponent";
+import ContactMeComponent from "./conteiners/ContactMeComponent/ContactMeComponent";
 
 /**
  * App the main wrapper
@@ -20,10 +20,11 @@ import AboutMeComponent from "./conteiners/AboutMeComponent/AboutMeComponent";
  */
 function App() {
   return (
-    <div className={classes.App}>
+    <div>
       <Layout>
           <Switch>
               <Route path='/aboutMe' component={AboutMeComponent}/>
+              <Route path='/contactMe' component={ContactMeComponent}/>
               <Route path='/' exact component={HomePageComponent}/>
               <Redirect to='/'/>
           </Switch>

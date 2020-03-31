@@ -9,6 +9,12 @@ var globalMixins = {
       '-ms-user-select': 'none',
       'user-select': 'none'
     },
+    PageTitleDefault: function (obj, value) {
+        return {
+            'font-size': '60px',
+            'color': 'grey'
+        }
+    },
     /* OpenSans is a dynamic mixin  */
     OpenSans: function (obj, value) {
       return {
@@ -20,5 +26,6 @@ var globalMixins = {
         '-moz-osx-font-smoothing': 'grayscale'
       }
     }
-  }
-  module.exports = globalMixins
+  };
+
+  module.exports = globalMixins;

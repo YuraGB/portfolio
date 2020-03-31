@@ -9,6 +9,8 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import PropTypes from 'prop-types';
 
+import classes from "./NavigationLink.module.css";
+
 /**
  * NavigationLink
  *
@@ -20,7 +22,7 @@ const NavigationLink = (props) => {
         <NavLink
             to={props.link}
             exact
-            {...props}
+            className={[classes.NavigationLink, props.className ? props.className : ''].join(' ')}
             >{props.children}</NavLink>
     )
 };

@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import NavigationLink from "../../components/Navigation/NavigationLink/NavigationLink";
 
 /**
  * About Me
@@ -16,7 +17,8 @@ import React from 'react';
 const AboutMeComponent = (props) => {
     return (
         <article>
-            <h1>About Me</h1>
+            <h1 className='page_title'>About Me</h1>
+            <NavigationLink link='/contactMe'>Leave me the message</NavigationLink>
         </article>
     )
 };
