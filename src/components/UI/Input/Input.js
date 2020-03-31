@@ -42,7 +42,7 @@ const Input = (props) => {
     }
     return (
         <div className={classes.Input}>
-            <label className={classes.Label}  htmlFor="">{props.label}</label>
+            <label className={classes.Label}  htmlFor="">{props.name ? props.name : props.label}</label>
             {inputElement}
         </div>
     )

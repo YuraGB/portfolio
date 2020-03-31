@@ -15,9 +15,30 @@ const ContactMeComponent = (props) => {
         <article>
             <h1 className='page_title'>Contact Me</h1>
             <form className={classes.ContactForm}>
-                <Input elementType='textarea' label='Comment'/>
-                <Input elementType='input' label='Your name'/>
-                <Input elementType='input' label='email' elementConfig={{type: 'email'}}/>
+                <Input
+                    elementType='textarea'
+                    label='Comment'
+                    elementConfig={{
+                        placeholder: 'Type your message',
+                        name: 'message',
+                        cols:"45",
+                        rows:'7',
+                    }}/>
+                <Input
+                    elementType='input'
+                    label='Your name'
+                    elementConfig={{
+                        placeholder: 'Type your name',
+                        name:'name'
+                    }}/>
+                <Input
+                    elementType='input'
+                    label='E-mail'
+                    elementConfig={{
+                        type: 'email',
+                        name: 'email',
+                        placeholder: 'Type your e-mail',
+                    }}/>
             </form>
         </article>
     )
