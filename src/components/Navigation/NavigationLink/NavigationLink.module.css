@@ -1,0 +1,7 @@
+.NavigationLink {
+    text-decoration: none;
+
+    &.active {
+        pointer-events: none;
+    }
+}

@@ -1,0 +1,26 @@
+.page-content {
+    &-exit-active,
+    &-enter-active{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+
+    }
+
+    &-enter,
+    &-exit-done {
+        opacity: 0;
+    }
+}
+
+.content {
+    overflow: auto;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    &.page-content-enter-done {
+        opacity: 1;
+    }
+}

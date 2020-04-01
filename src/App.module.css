@@ -1,6 +1,0 @@
-.App {
-  text-align: center;
-  color: $secondary; 
-  @mixin noSelect; 
-  @mixin OpenSans 30px; 
-}
