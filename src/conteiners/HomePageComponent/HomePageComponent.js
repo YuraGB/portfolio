@@ -15,7 +15,7 @@ import React from 'react';
  */
 const HomePageComponent = (props) => {
     return (
-        <article>
+        <article className='content'>
             <h1 className='page_title'>HomePage</h1>
         </article>
     )

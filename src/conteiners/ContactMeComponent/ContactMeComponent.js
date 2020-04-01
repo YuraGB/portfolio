@@ -19,7 +19,7 @@ import Button from "../../components/UI/Button/Button";
  */
 const ContactMeComponent = (props) => {
     return (
-        <article>
+        <article className='content'>
             <h1 className='page_title'>Contact Me</h1>
             <form className={classes.ContactForm} onSubmit={(e) => e.preventDefault()}>
                 <Input

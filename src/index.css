@@ -1,5 +1,6 @@
 body {
   @mixin OpenSans 20px;
+  margin: 0;
 
   .page_title {
     @mixin PageTitleDefault

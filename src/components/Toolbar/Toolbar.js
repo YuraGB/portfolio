@@ -5,12 +5,13 @@
  * @copyright 2020
  */
 
-import React from 'react';
+import React, {useContext} from 'react';
 import {CSSTransition} from 'react-transition-group'
 
 
 import './Toolbar.css';
 import NavigationLink from "../Navigation/NavigationLink/NavigationLink";
+import Context from "../../Context/context";
 
 /**
  * Toolbar
@@ -19,6 +20,8 @@ import NavigationLink from "../Navigation/NavigationLink/NavigationLink";
  * @return {*} component
  */
 const Toolbar = (props) => {
+    const {directToAboutMe} = useContext(Context);
+
     return (
         <CSSTransition
             in
@@ -26,7 +29,7 @@ const Toolbar = (props) => {
             appear={true}
             timeout={1200}
         >
-            <section className='Toolbar'>
+            <section className='Toolbar' onClick={directToAboutMe}>
                     <NavigationLink className='nav_link' link='/aboutMe'>
                         Me
                     </NavigationLink>

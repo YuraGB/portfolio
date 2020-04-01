@@ -5,44 +5,48 @@
  * @copyright 2020
  */
 
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
 import Auxx from "../Auxx/Auxx";
 import classes from './Layout.module.css';
 import Toolbar from "../../components/Toolbar/Toolbar";
 import ReturnToHPComponent from "../../components/Navigation/ReturnToHPComponent/ReturnToHPComponent";
+import Context from "../../Context/context";
 
 /**
  * Layout component
  *
  * @return component
  */
-class Layout extends Component {
-    state = {
-        showSideDrower: false
-    };
-    sideDrowerCloseHandler = () => {
-        this.setState(prev => {
-            return {
-                ...prev,
-                showSideDrower: !prev.showSideDrower
-            }
-        })
+const Layout = (props) => {
+  //  const [showSideDrower, showSideDrowerHendler] = useState(false); in-progress
+    const [is_directToAboutMe, directToAbouteMeHendler] = useState(false);
+
+    const directToAboutMe = () => {
+      directToAbouteMeHendler(true);
     };
 
-    render() {
-        return (
-            <Auxx>
+    /*
+        const sideDrowerCloseHandler = () => {
+            showSideDrowerHendler(prev => {
+                return {
+                    ...prev,
+                    showSideDrower: !prev.showSideDrower
+                }
+            })
+        };*/
+
+    return (
+        <Auxx>
+            <Context.Provider value={{is_directToAboutMe, directToAboutMe}}>
                 <ReturnToHPComponent/>
-                <Toolbar
-                    drawerToggleClicked={this.sideDrowerCloseHandler}
-                />
+                <Toolbar isDirected={is_directToAboutMe} clicked={directToAboutMe}/>
                 <main className={classes.Content}>
-                    {this.props.children}
+                    {props.children}
                 </main>
-            </Auxx>
-        )
-    }
-}
+            </Context.Provider>
+        </Auxx>
+    )
+};
 
 export default Layout;
