@@ -19,6 +19,7 @@ import Context from "../../Context/context";
  */
 const AboutMeComponent = (props) => {
     const {is_directToAboutMe} = useContext(Context);
+    console.log("AbMe", is_directToAboutMe);
 
     return (
         <article className='content'>

@@ -1,14 +1,5 @@
 .Button {
-    background-color: transparent;
-    color: grey;
-    border-radius: 5px;
-    border: 1px solid grey;
-    outline: none;
-    cursor: pointer;
-    font: inherit;
-    padding: 10px;
-    margin: 10px;
-    font-weight: bold;
+    @mixin ButtonDefault transparent, grey;
 }
 
 .Success {

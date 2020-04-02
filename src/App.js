@@ -21,13 +21,14 @@ import './App.css';
  * @return {*} component
  */
 function App({location}) {
+    console.log("App");
   return (
     <div>
       <Layout>
           <TransitionGroup>
               <CSSTransition
                   key={location.key}
-                  timeout={{ enter: 300, exit: 100 }}
+                  timeout={{ enter: 500, exit: 300 }}
                   classNames='page-content'
               >
           <Switch>

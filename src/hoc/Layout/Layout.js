@@ -19,22 +19,11 @@ import Context from "../../Context/context";
  * @return component
  */
 const Layout = (props) => {
-  //  const [showSideDrower, showSideDrowerHendler] = useState(false); in-progress
     const [is_directToAboutMe, directToAbouteMeHendler] = useState(false);
 
     const directToAboutMe = () => {
       directToAbouteMeHendler(true);
     };
-
-    /*
-        const sideDrowerCloseHandler = () => {
-            showSideDrowerHendler(prev => {
-                return {
-                    ...prev,
-                    showSideDrower: !prev.showSideDrower
-                }
-            })
-        };*/
 
     return (
         <Auxx>
