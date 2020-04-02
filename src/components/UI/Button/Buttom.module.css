@@ -1,14 +1,15 @@
 .Button {
-    background-color: transparent;
-    color: grey;
-    border-radius: 5px;
-    border: 1px solid grey;
-    outline: none;
-    cursor: pointer;
-    font: inherit;
-    padding: 10px;
-    margin: 10px;
-    font-weight: bold;
+    @mixin ButtonDefault transparent, grey;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 1px 1px 1px grey;
+    }
+
+    &:disabled {
+        cursor: inherit;
+        color: #7E7365;
+    }
 }
 
 .Success {
@@ -17,9 +18,4 @@
 
 .Danger {
     color: #944317;
-}
-
-.Button:disabled {
-    cursor: inherit;
-    color: #7E7365;
 }

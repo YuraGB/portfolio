@@ -1,6 +1,6 @@
 .Toolbar {
     transition: height cubic-bezier(.59,.02,.1,.97) 1s,width 1s, transform .5s, background-color 0.5s;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     overflow: hidden;
