@@ -21,9 +21,7 @@ import './App.css';
  * @return {*} component
  */
 function App({location}) {
-    console.log("App");
   return (
-    <div>
       <Layout>
           <TransitionGroup>
               <CSSTransition
@@ -40,7 +38,6 @@ function App({location}) {
               </CSSTransition>
           </TransitionGroup>
       </Layout>
-    </div>
   );
 }
 

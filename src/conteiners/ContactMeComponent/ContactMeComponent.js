@@ -103,7 +103,7 @@ const ContactMeComponent = (props) => {
         updatedForm[field] = uptdFormElem;
 
         let formIsValid = utils.formFieldsToArray(updatedForm).every(isValidated => !!isValidated.valid === true);
-
+        console.log(updatedForm);
         setValidationStatus(formIsValid);
         updateFieldsHandler(updatedForm);
     };
@@ -116,6 +116,9 @@ const ContactMeComponent = (props) => {
             name={field.name}
             elementConfig={field.elementConfig}
             changed={(e)=> onChangeHandler(e, field.id)}
+            touched={field.touched}
+            invalid={!field.valid}
+            shouldValidate={field.elementConfig.validation.required}
         />
     ));
 
@@ -124,7 +127,7 @@ const ContactMeComponent = (props) => {
             <h1 className='page_title'>Contact Me</h1>
             <form className={classes.ContactForm} onSubmit={(e) => e.preventDefault()}>
                 {fields}
-                <Button disabled={isValidated}>Send</Button>
+                <Button btnType='Success' disabled={isValidated}>Send</Button>
             </form>
         </article>
     )

@@ -22,12 +22,12 @@
     &-exit-active {
         transition: opacity 0.3s;
     }
-
 }
 
 .content {
     overflow: auto;
     width: 100%;
+    min-height: 100vh;
 
     &.page-content-enter-done {
         opacity: 1;

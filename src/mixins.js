@@ -1,4 +1,9 @@
 // src/mixins.js
+
+/**
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
 var globalMixins = {
     /* noSelect is a static mixin  */
     noSelect: {
@@ -30,7 +35,8 @@ var globalMixins = {
             'font': 'inherit',
             'padding': '10px',
             'margin': '10px',
-            'font-weight': 'bold'
+            'font-weight': 'bold',
+            'transition': 'background-color 0.3s, box-shadow 0.3s'
         }
     },
     /* OpenSans is a dynamic mixin  */
