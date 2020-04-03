@@ -5,12 +5,14 @@
  * @copyright 2020
  */
 
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 
 import classes from './ContactMe.module.css';
 import Input from "../../components/UI/Input/Input";
 import Button from "../../components/UI/Button/Button";
 import * as utils from './utils';
+import Context from "../../Context/context";
+import Modal from "../../components/UI/Modal/Modal";
 
 /**
  * ContactMeComponent page
@@ -72,6 +74,7 @@ const ContactMeComponent = (props) => {
             }
         },
     });
+    const {onOpenModalHandler} = useContext(Context);
 
     const checkValidity = (value, validationObject) => {
         let is_valid = true;
@@ -103,7 +106,6 @@ const ContactMeComponent = (props) => {
         updatedForm[field] = uptdFormElem;
 
         let formIsValid = utils.formFieldsToArray(updatedForm).every(isValidated => !!isValidated.valid === true);
-        console.log(updatedForm);
         setValidationStatus(formIsValid);
         updateFieldsHandler(updatedForm);
     };
@@ -124,10 +126,15 @@ const ContactMeComponent = (props) => {
 
     return (
         <article className='content'>
+            <Modal><h1>Modal</h1></Modal>
             <h1 className='page_title'>Contact Me</h1>
             <form className={classes.ContactForm} onSubmit={(e) => e.preventDefault()}>
                 {fields}
-                <Button btnType='Success' disabled={isValidated}>Send</Button>
+                <Button
+                    btnType='Success'
+                    disabled={isValidated}
+                    clicked={onOpenModalHandler}
+                >Send</Button>
             </form>
         </article>
     )

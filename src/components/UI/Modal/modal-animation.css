@@ -1,0 +1,28 @@
+.show-popup {
+    &-enter {
+        transform: translateY(-20vh);
+        opacity: 0;
+
+        &-active,
+        &-done {
+            transform: translateY(0);
+            transition: transform 0.2s ease-out, opacity 0.4s;
+            opacity: 1;
+        }
+    }
+
+    &-exit {
+        opacity: 0;
+        transition: transform 0.2s ease-out, opacity 0.3s;
+
+        &-active {
+            transform: translateY(-10vh);
+            opacity: 0;
+        }
+
+        &-done {
+            transform: translateY(-100vh);
+            opacity: 0;
+        }
+    }
+}

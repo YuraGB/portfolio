@@ -20,14 +20,15 @@ import Context from "../../Context/context";
  */
 const Layout = (props) => {
     const [is_directToAboutMe, directToAbouteMeHendler] = useState(false);
+    const [showModal, setModalStatus] = useState(false);
 
-    const directToAboutMe = () => {
-      directToAbouteMeHendler(true);
-    };
+    const onOpenModalHandler = () => setModalStatus(prevState => !prevState);
+    const directToAboutMe = () => directToAbouteMeHendler(true);
 
     return (
         <Auxx>
-            <Context.Provider value={{is_directToAboutMe, directToAboutMe}}>
+            <Context.Provider
+                value={{is_directToAboutMe, directToAboutMe, showModal, onOpenModalHandler}}>
                 <ReturnToHPComponent/>
                 <Toolbar isDirected={is_directToAboutMe} clicked={directToAboutMe}/>
                 <main className={classes.Content}>
