@@ -1,3 +1,9 @@
+/**
+ * The Form
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
 import React, {useState} from 'react';
 
 import classes from "./FormContactMeComponent.module.css";
@@ -8,6 +14,12 @@ import Input from "../UI/Input/Input";
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 import Spinner from "../Spinner/Spinner";
 
+/**
+ * Form component
+ *
+ * @param {*} props
+ * @return {*} component
+ */
 const FormContactMeComponent = (props) => {
     const [isValidated, setValidationStatus] = useState(false);
     const [spinner, showSpinner] = useState(null);
