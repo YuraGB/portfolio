@@ -1,5 +1,18 @@
+/**
+ * Spinner
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
+
 import React from 'react';
 
+/**
+ * Spinner
+ *
+ * @param {*} props
+ * @return {*} component
+ */
 const Spinner = (props) => {
     return (
         <div style={{background: 'white', textAlign: 'center'}}>
