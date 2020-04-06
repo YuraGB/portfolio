@@ -21,9 +21,8 @@ import './modal-animation.css'
  * @param props
  * @return {*} component
  */
-const Modal = (props) => {
+const Modal = React.memo((props) => {
     const {showModal, onOpenModalHandler} = useContext(Context);
-
     return (
         <Auxx>
             <CSSTransition
@@ -44,6 +43,6 @@ const Modal = (props) => {
             />
         </Auxx>
     )
-};
+});
 
 export default React.memo(Modal);
