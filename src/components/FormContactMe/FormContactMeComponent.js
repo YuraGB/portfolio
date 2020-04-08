@@ -21,7 +21,7 @@ import Spinner from "../Spinner/Spinner";
  * @param {*} props
  * @return {*} component
  */
-const FormContactMeComponent = (props) => {
+export const FormContactMeComponent = (props) => {
     let fields = null;
 
     if( props.formFields) {
@@ -48,7 +48,6 @@ const FormContactMeComponent = (props) => {
                 disabled={props.isValidated && !props.spinner}
                 clicked={props.onSubmitHandler}
             >Send</Button>
-            <button></button>
         </form>
     )
 };
@@ -60,4 +59,4 @@ FormContactMeComponent.propTypes = {
     onChangeHandler: PropTypes.func
 };
 
-export default FormContactMeComponent;
+export default withErrorHandler(FormContactMeComponent, axios);

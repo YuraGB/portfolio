@@ -9,13 +9,17 @@ import React from "react";
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import  FormContactMeComponent from "./FormContactMeComponent";
+import {FormContactMeComponent} from "./FormContactMeComponent";
 import Spinner from "../Spinner/Spinner";
 import Button from "../UI/Button/Button";
 import * as utils from "../../conteiners/ContactMeComponent/utils";
 
 configure({adapter: new Adapter()});
 
+/**
+ * there is an issue with HOC withErrorHandler
+ * the tests don't work (
+ */
 describe('<ContactForm/>', () => {
     let wrapper;
 
