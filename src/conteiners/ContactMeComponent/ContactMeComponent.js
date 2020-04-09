@@ -111,7 +111,8 @@ const ContactMeComponent = (props) => {
             axios.post('/comments.json', {
                 authorsName: formFields.name.value,
                 authorsEmail: formFields.email.value,
-                authorsComment: formFields.textarea.value
+                authorsComment: formFields.textarea.value,
+                date: new Date().getTime()
             })
             .then(resp => showSpinner(false))
             .catch(e => showSpinner(false))

@@ -23,20 +23,12 @@ import './App.css';
 function App({location}) {
   return (
       <Layout>
-          <TransitionGroup>
-              <CSSTransition
-                  key={location.key}
-                  timeout={{ enter: 500, exit: 300 }}
-                  classNames='page-content'
-              >
               <Switch>
                   <Route path='/aboutMe' component={AboutMeComponent}/>
                   <Route path='/contactMe' component={ContactMeComponent}/>
                   <Route path='/' exact component={HomePageComponent}/>
                   <Redirect to='/'/>
               </Switch>
-              </CSSTransition>
-          </TransitionGroup>
       </Layout>
   );
 }

@@ -5,12 +5,12 @@
  * @copyright 2020
  */
 
-import React, {useContext} from 'react';
-import {Redirect} from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
 
 import './AboutMe.css'
 import NavigationLink from "../../components/Navigation/NavigationLink/NavigationLink";
-import Context from "../../Context/context";
+import axios from "../../axios";
+import CommentsComponent from "../../components/CommentsComponent/CommentsComponent";
 
 
 /**
@@ -20,14 +20,22 @@ import Context from "../../Context/context";
  * @return {*} component
  */
 const AboutMeComponent = (props) => {
-    const {is_directToAboutMe} = useContext(Context);
+    const [comments, renderComments] = useState(null);
+
+    useEffect(() => {
+        axios.get('./comments.json')
+            .then(resp => {
+               const data = Object.keys(resp.data).map(commentsId => ({
+                    id: commentsId,
+                   commentData: resp.data[commentsId]
+                }));
+                renderComments(data)});
+    },[comments]);
 
     return (
             <article className='content'>
-                {
-                    !is_directToAboutMe && <Redirect to='/' />
-                }
                 <h1 className='page_title'>About Me</h1>
+                 <CommentsComponent comments={comments}/>
                 <NavigationLink link='/contactMe'>Leave me the message</NavigationLink>
             </article>
     )
