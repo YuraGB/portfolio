@@ -7,7 +7,6 @@
 
 import React from 'react';
 import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
-import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 import Layout from "./hoc/Layout/Layout";
 import HomePageComponent from "./conteiners/HomePageComponent/HomePageComponent";
