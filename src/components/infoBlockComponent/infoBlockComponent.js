@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
  */
 const InfoBlockComponent = (props) => {
     return (
-        <section>
+        <section style={{background: 'purple'}}>
             <h3>{props.title}</h3>
             {props.children}
         </section>

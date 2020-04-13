@@ -9,6 +9,7 @@ import React, {useEffect, useState} from 'react';
 
 import axios from '../../axios';
 import WorkExperienceComponent from '../../components/Work/WorkExperienceComponent'
+import classes from './HomePage.module.css';
 
 /**
  * HomePageComponent
@@ -26,8 +27,7 @@ const HomePageComponent = (props) => {
     }, []);
 
     return (
-        <article className='content'>
-            <h1 className='page_title'>HomePage</h1>
+        <article className={['content', classes.HomePage].join(' ')}>
             {proffesions && <WorkExperienceComponent work={proffesions} />}
         </article>
     )
