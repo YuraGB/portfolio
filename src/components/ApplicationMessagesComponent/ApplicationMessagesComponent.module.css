@@ -1,0 +1,24 @@
+.Message {
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 20px;
+    display: inline-block;
+    background: bisque;
+    top: 50px;
+
+    &.Success {
+        background: color( green a(10%));
+    }
+
+    &.Fail {
+        background: color( red a(90%));
+    }
+
+    span {
+        font-size: 12px;;
+        font-weight: lighter;
+        letter-spacing: .8px;
+    }
+}

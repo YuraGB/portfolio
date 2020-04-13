@@ -7,8 +7,7 @@
 
 import React, {useEffect, useState} from 'react';
 
-import './AboutMe.css'
-import NavigationLink from "../../components/Navigation/NavigationLink/NavigationLink";
+import './AboutMe.css';
 import axios from "../../axios";
 import CommentsComponent from "../../components/CommentsComponent/CommentsComponent";
 
@@ -30,13 +29,12 @@ const AboutMeComponent = (props) => {
                    commentData: resp.data[commentsId]
                 }));
                 renderComments(data)});
-    },[comments]);
+    },[]);
 
     return (
-            <article className='content'>
+            <article className='content AboutMePage'>
                 <h1 className='page_title'>About Me</h1>
-                 <CommentsComponent comments={comments}/>
-                <NavigationLink link='/contactMe'>Leave me the message</NavigationLink>
+                <CommentsComponent comments={comments}/>
             </article>
     )
 };

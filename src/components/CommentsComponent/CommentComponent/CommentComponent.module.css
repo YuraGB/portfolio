@@ -1,0 +1,15 @@
+.Comment {
+    min-height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid black;
+
+    &:nth-child(1) {
+        border-top: 1px solid black;
+    }
+
+    q {
+
+    }
+}

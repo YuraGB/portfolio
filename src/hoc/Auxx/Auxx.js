@@ -6,7 +6,7 @@
  */
 
 /**
- * Auxx
+ * Auxx hire order component
  *
  * @param {*} props
  * @return {*} children of the component

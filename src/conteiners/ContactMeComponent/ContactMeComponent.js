@@ -5,10 +5,11 @@
  * @copyright 2020
  */
 
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import FormContactMeComponent from "../../components/FormContactMe/FormContactMeComponent";
 import * as utils from "./utils";
 import axios from "../../axios";
+import Context from "../../Context/context";
 
 /**
  * ContactMeComponent page
@@ -17,9 +18,7 @@ import axios from "../../axios";
  * @return {*} component
  */
 const ContactMeComponent = (props) => {
-    const [isValidated, setValidationStatus] = useState(false);
-    const [spinner, showSpinner] = useState(null);
-    const [formFields, updateFieldsHandler] = useState({
+    const stateFields = {
         name: {
             elementType: 'input',
             label: 'Your name',
@@ -70,7 +69,13 @@ const ContactMeComponent = (props) => {
                 },
             }
         },
-    });
+    };
+
+    const [isValidated, setValidationStatus] = useState(false);
+    const [spinner, showSpinner] = useState(null);
+    const [formFields, updateFieldsHandler] = useState(stateFields);
+    const {hideApplicationMessage} = useContext(Context);
+
     const checkValidity = (value, validationObject) => {
         let is_valid = true;
         if (!validationObject.required) {
@@ -114,7 +119,14 @@ const ContactMeComponent = (props) => {
                 authorsComment: formFields.textarea.value,
                 date: new Date().getTime()
             })
-            .then(resp => showSpinner(false))
+            .then(resp => {
+                hideApplicationMessage(resp.statusText === 'OK' ?
+                    {text:'The Message was saved', status: "Success" } :
+                    {text:'Something went wrong', status: "Fail" });
+                showSpinner(false);
+                setValidationStatus(false);
+                updateFieldsHandler(stateFields)
+            })
             .catch(e => showSpinner(false))
         }
     };

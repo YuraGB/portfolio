@@ -4,6 +4,7 @@
  * @author Yurii Huriianov <yuhur1985@gmail.com
  * @copyright 2020
  */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -24,7 +25,7 @@ import Spinner from "../Spinner/Spinner";
 export const FormContactMeComponent = (props) => {
     let fields = null;
 
-    if( props.formFields) {
+    if(props.formFields) {
         fields = utils.formFieldsToArray(props.formFields).map(field => (
             <Input
                 key={field.name}

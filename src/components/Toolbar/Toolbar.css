@@ -1,5 +1,4 @@
 .Toolbar {
-    transition: height cubic-bezier(.59,.02,.1,.97) 1s,width 1s, transform .5s, background-color 0.5s;
     position: fixed;
     bottom: 0;
     right: 0;
@@ -47,6 +46,7 @@
         height: 100vh;
         opacity: 1;
         width: 10px;
+        transition: height cubic-bezier(.59,.02,.1,.97) 1s,width 1s, transform .5s, background-color 0.5s;
 
         &:before {
             content: '';
@@ -69,11 +69,12 @@
     &-enter-done {
         height: 100vh;
         width: 50px;
+        transition: width 1s, transform .5s, background-color 0.5s;
 
         &:before {
             content: '';
             position: absolute;
-            width: 100%;
+            width: 0;
             height: 100%;
             display: block;
             transform: translateX(-100%);

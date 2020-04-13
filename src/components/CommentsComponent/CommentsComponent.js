@@ -2,6 +2,8 @@ import React from 'react';
 
 import Comment from "./CommentComponent/CommentComponent";
 import Spinner from "../Spinner/Spinner";
+import NavigationLink from "../Navigation/NavigationLink/NavigationLink";
+import Button from "../UI/Button/Button";
 
 const CommentsComponent = (props) => {
     const {comments, commentsSize = 3} = props;
@@ -20,9 +22,14 @@ const CommentsComponent = (props) => {
             />)
         );
     }
+
     return (
-        <section>
+        <section className='comments'>
+            <h3>{comments ? 'Comments' : 'There are no comments yet'}</h3>
             {components}
+            <Button btnType='Success'>
+                <NavigationLink link='/contactMe'>Leave me the message</NavigationLink>
+            </Button>
         </section>
     )
 };
