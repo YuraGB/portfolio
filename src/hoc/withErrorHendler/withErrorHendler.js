@@ -8,7 +8,8 @@
 import React, {Component} from 'react';
 
 import Auxx from "../Auxx/Auxx";
-import Modal from "../../components/UI/Model/Modal";
+import Modal from "../../components/UI/Modal/Modal";
+import Context from "../../Context/context";
 
 /**
  * withErrorHandler
@@ -19,20 +20,20 @@ import Modal from "../../components/UI/Model/Modal";
  */
 const withErrorHandler = (WrapperComponent, axios) => {
     return class extends Component {
+        static contextType = Context;
 
         constructor (props) {
             super(props);
 
             this.reqInt = axios.interceptors.request.use(null, req => {
-
                 this.setState({error: null});
                 return req;
             });
 
             this.resInt = axios.interceptors.response.use(res => res, error => {
-                this.setState({error: error});
+                this.context.onOpenModalHandler();
+                this.setState({error: error})
             });
-
         };
 
         componentWillUnmount() {
@@ -52,7 +53,7 @@ const withErrorHandler = (WrapperComponent, axios) => {
             return (
                 <Auxx>
                     <Modal
-                        show={this.state.error}
+                        show={!!this.state.error}
                         modalClosed={this.errorConfirmMethod}
                     >
                         {this.state.error ?

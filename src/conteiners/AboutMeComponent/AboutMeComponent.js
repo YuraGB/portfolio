@@ -5,39 +5,45 @@
  * @copyright 2020
  */
 
-import React, {useContext} from 'react';
-import {Redirect} from 'react-router-dom';
-import {CSSTransition} from "react-transition-group";
+import React, {useContext, useEffect} from 'react';
 
-import './AboutMe.css'
-import NavigationLink from "../../components/Navigation/NavigationLink/NavigationLink";
+import './AboutMe.css';
+import axios from "../../axios";
+import CommentsComponent from "../../components/CommentsComponent/CommentsComponent";
 import Context from "../../Context/context";
 
 
 /**
  * About Me
  *
- * @param {*} props
  * @return {*} component
  */
-const AboutMeComponent = (props) => {
-    const {is_directToAboutMe} = useContext(Context);
+const AboutMeComponent = () => {
+    const {state, stateHandler} = useContext(Context);
+
+    useEffect(() => {
+        if(!state.abMe) {
+            axios.get('/comments.json')
+                .then(resp => {
+                    stateHandler((prevState) => {
+                        return {
+                            ...prevState,
+                            abMe: Object.keys(resp.data).map(commentsId => ({
+                                id: commentsId,
+                                commentData: resp.data[commentsId]}))
+                            }
+                        }
+                    );
+                }
+            );
+        }
+    },[state.abMe, stateHandler]);
 
     return (
-        <CSSTransition
-            in
-            classNames='slide-about-me'
-            appear={true}
-            timeout={300}
-        >
-            <article className='content'>
-                {
-                    !is_directToAboutMe && <Redirect to='/' />
-                }
+            <article className='content AboutMePage'>
                 <h1 className='page_title'>About Me</h1>
-                <NavigationLink link='/contactMe'>Leave me the message</NavigationLink>
+                <CommentsComponent comments={state.abMe}/>
             </article>
-        </CSSTransition>
     )
 };
 

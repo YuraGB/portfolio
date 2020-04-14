@@ -12,6 +12,7 @@ import classes from './Layout.module.css';
 import Toolbar from "../../components/Toolbar/Toolbar";
 import ReturnToHPComponent from "../../components/Navigation/ReturnToHPComponent/ReturnToHPComponent";
 import Context from "../../Context/context";
+import ApplicationMessagesComponent from "../../components/ApplicationMessagesComponent/ApplicationMessagesComponent";
 
 /**
  * Layout component
@@ -20,15 +21,37 @@ import Context from "../../Context/context";
  */
 const Layout = (props) => {
     const [is_directToAboutMe, directToAbouteMeHendler] = useState(false);
+    const [showModal, setModalStatus] = useState(false);
+    const [message, applicationMessageHendler] = useState(null);
+    const [state, stateHandler] = useState({hp:null, abMe:null});
 
-    const directToAboutMe = () => {
-      directToAbouteMeHendler(true);
+    const onOpenModalHandler = () => setModalStatus(prevState => !prevState);
+    const directToAboutMe = () => directToAbouteMeHendler(true);
+    const hideApplicationMessage = (response) => {
+        applicationMessageHendler(response);
+
+        setTimeout(() => {
+           applicationMessageHendler(null)
+        }, 5000);
     };
 
     return (
         <Auxx>
-            <Context.Provider value={{is_directToAboutMe, directToAboutMe}}>
-                <ReturnToHPComponent/>
+            <Context.Provider
+                value={
+                    {
+                        is_directToAboutMe,
+                        directToAboutMe,
+                        showModal,
+                        onOpenModalHandler,
+                        message,
+                        hideApplicationMessage,
+                        state,
+                        stateHandler
+                    }
+                }>
+                <ReturnToHPComponent />
+                <ApplicationMessagesComponent message={message}/>
                 <Toolbar isDirected={is_directToAboutMe} clicked={directToAboutMe}/>
                 <main className={classes.Content}>
                     {props.children}

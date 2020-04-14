@@ -1,5 +1,6 @@
 .NavigationLink {
     text-decoration: none;
+    color: inherit;
 
     &.active {
         pointer-events: none;

@@ -5,12 +5,11 @@
  * @copyright 2020
  */
 
-import React, {useState} from 'react';
-
-import classes from './ContactMe.module.css';
-import Input from "../../components/UI/Input/Input";
-import Button from "../../components/UI/Button/Button";
-import * as utils from './utils';
+import React, {useContext, useState} from 'react';
+import FormContactMeComponent from "../../components/FormContactMe/FormContactMeComponent";
+import * as utils from "./utils";
+import axios from "../../axios";
+import Context from "../../Context/context";
 
 /**
  * ContactMeComponent page
@@ -19,8 +18,7 @@ import * as utils from './utils';
  * @return {*} component
  */
 const ContactMeComponent = (props) => {
-    const [isValidated, setValidationStatus] = useState(false);
-    const [formFields, updateFieldsHandler] = useState({
+    const stateFields = {
         name: {
             elementType: 'input',
             label: 'Your name',
@@ -71,7 +69,12 @@ const ContactMeComponent = (props) => {
                 },
             }
         },
-    });
+    };
+
+    const [isValidated, setValidationStatus] = useState(false);
+    const [spinner, showSpinner] = useState(null);
+    const [formFields, updateFieldsHandler] = useState(stateFields);
+    const {hideApplicationMessage} = useContext(Context);
 
     const checkValidity = (value, validationObject) => {
         let is_valid = true;
@@ -79,7 +82,7 @@ const ContactMeComponent = (props) => {
             return true;
         }
 
-        is_valid = utils.validators.reqireCheck(value) && is_valid;
+        is_valid = utils.validators.requireCheck(value) && is_valid;
 
         if(validationObject.rules && is_valid) {
             is_valid = validationObject.rules.map(validator => validator(value)).every(isValid => isValid === true)
@@ -103,32 +106,43 @@ const ContactMeComponent = (props) => {
         updatedForm[field] = uptdFormElem;
 
         let formIsValid = utils.formFieldsToArray(updatedForm).every(isValidated => !!isValidated.valid === true);
-        console.log(updatedForm);
         setValidationStatus(formIsValid);
         updateFieldsHandler(updatedForm);
     };
 
-    let fields = utils.formFieldsToArray(formFields).map( field => (
-        <Input
-            key={field.name}
-            elementType={field.elementType}
-            label={field.label}
-            name={field.name}
-            elementConfig={field.elementConfig}
-            changed={(e)=> onChangeHandler(e, field.id)}
-            touched={field.touched}
-            invalid={!field.valid}
-            shouldValidate={field.elementConfig.validation.required}
-        />
-    ));
+    const onSubmitHandler = () => {
+        if (isValidated) {
+            showSpinner(true);
+            axios.post('/comments.json', {
+                authorsName: formFields.name.value,
+                authorsEmail: formFields.email.value,
+                authorsComment: formFields.textarea.value,
+                date: new Date().getTime()
+            })
+            .then(resp => {
+                hideApplicationMessage(resp.statusText === 'OK' ?
+                    {text:'The Message was saved', status: "Success" } :
+                    {text:'Something went wrong', status: "Fail" });
+                showSpinner(false);
+                setValidationStatus(false);
+                updateFieldsHandler(stateFields)
+            })
+            .catch(e => showSpinner(false))
+        }
+    };
 
     return (
         <article className='content'>
             <h1 className='page_title'>Contact Me</h1>
-            <form className={classes.ContactForm} onSubmit={(e) => e.preventDefault()}>
-                {fields}
-                <Button btnType='Success' disabled={isValidated}>Send</Button>
-            </form>
+            <FormContactMeComponent
+                isValidated={isValidated}
+                setValidationStatus={setValidationStatus}
+                spinner={spinner}
+                formFields={formFields}
+                checkValidity={checkValidity}
+                onChangeHandler={onChangeHandler}
+                onSubmitHandler={onSubmitHandler}
+            />
         </article>
     )
 };

@@ -1,12 +1,5 @@
-$startSlide: calc(100vw - 20px);
-
-.slide-about-me {
-    transition: transform 0.3s ease-in-out;
-
-    &-appear {
-
-        &-done {
-
-        }
+.AboutMePage {
+    .comments {
+        width: 50%;
     }
 }

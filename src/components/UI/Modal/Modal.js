@@ -5,12 +5,15 @@
  * @copyright 2020
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {useContext} from 'react';
+import {CSSTransition} from "react-transition-group";
 
 import classes from './Modal.module.css';
 import Auxx from "../../../hoc/Auxx/Auxx";
 import Backdrop from "../Backdrop/Backdrop";
+import Context from "../../../Context/context";
+import './modal-animation.css'
+
 
 /**
  * Modal
@@ -18,31 +21,28 @@ import Backdrop from "../Backdrop/Backdrop";
  * @param props
  * @return {*} component
  */
-const Modal = (props) => {
+const Modal = React.memo((props) => {
+    const {showModal, onOpenModalHandler} = useContext(Context);
     return (
         <Auxx>
-            <div
+            <CSSTransition
+                in={showModal}
+                classNames='show-popup'
+                timeout={500}
+            ><section
                 className={classes.Modal}
-                style={{
-                    transform: props.show ? 'translateY(0vh)': 'translateY(100vh)',
-                    opacity: props.show ? '1' : '0'
-                }}
             >
                 {
                     props.children
                 }
-            </div>
+            </section>
+            </CSSTransition>
             <Backdrop
-                show={props.show}
-                clicked={props.modalClosed}
+                show={showModal}
+                clicked={onOpenModalHandler}
             />
         </Auxx>
     )
-};
-
-Modal.propTypes = {
-    show: PropTypes.bool,
-    modalClosed: PropTypes.func
-};
+});
 
 export default React.memo(Modal);
