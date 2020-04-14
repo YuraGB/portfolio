@@ -1,0 +1,19 @@
+.listItem {
+    display: flex;
+    justify-content: space-between;
+    max-width: 50%;
+
+    button {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+        button {
+            visibility: inherit;
+            display: inline-block;
+            opacity: 1;
+        }
+    }
+}

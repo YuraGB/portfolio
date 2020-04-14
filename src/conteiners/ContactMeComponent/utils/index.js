@@ -26,10 +26,10 @@ export const formFieldsToArray = (obj) => {
  */
 export const validators = {
     checkForScriptsInText: (text) => {
-        return true;
+        return !/<[^>]*>/.test(text);
     },
 
-    reqireCheck: (value) => {
+    requireCheck: (value) => {
        return value.trim() !== '';
     },
 

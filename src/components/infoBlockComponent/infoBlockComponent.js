@@ -8,6 +8,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import classes from './infoBlock.module.css';
+
 /**
  * InfoBlockComponent
  *
@@ -16,7 +18,7 @@ import PropTypes from 'prop-types';
  */
 const InfoBlockComponent = (props) => {
     return (
-        <section style={{background: 'purple'}}>
+        <section className={classes.Block} style={{background: 'purple'}}>
             <h3>{props.title}</h3>
             {props.children}
         </section>

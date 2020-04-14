@@ -23,6 +23,7 @@ const Layout = (props) => {
     const [is_directToAboutMe, directToAbouteMeHendler] = useState(false);
     const [showModal, setModalStatus] = useState(false);
     const [message, applicationMessageHendler] = useState(null);
+    const [state, stateHandler] = useState({hp:null, abMe:null});
 
     const onOpenModalHandler = () => setModalStatus(prevState => !prevState);
     const directToAboutMe = () => directToAbouteMeHendler(true);
@@ -44,7 +45,9 @@ const Layout = (props) => {
                         showModal,
                         onOpenModalHandler,
                         message,
-                        hideApplicationMessage
+                        hideApplicationMessage,
+                        state,
+                        stateHandler
                     }
                 }>
                 <ReturnToHPComponent />

@@ -5,30 +5,49 @@
  * @copyright 2020
  */
 
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 
 import axios from '../../axios';
-import WorkExperienceComponent from '../../components/Work/WorkExperienceComponent'
 import classes from './HomePage.module.css';
+import HomePageBlock from "../../components/HomePageBlock/HomePageBlock";
+import Context from "../../Context/context";
+import Auxx from "../../hoc/Auxx/Auxx";
 
 /**
  * HomePageComponent
  *
- * @param {*} props
  * @return {*} component
  */
-const HomePageComponent = (props) => {
-    const [proffesions, setProffesions] = useState(null);
+const HomePageComponent = () => {
+    const {state, stateHandler} = useContext(Context);
 
     useEffect( () => {
-        axios.get('/work.json')
-            .then(resp => setProffesions(resp.data)
-        )
-    }, []);
+        if(!state.hp) {
+            axios.get('/home page state.json')
+                .then(resp => {
+                    stateHandler((prevState) => {
+                        return {
+                            ...prevState,
+                            hp: {
+                                work: resp.data.work,
+                                hobbies: resp.data.hobbies
+                            }
+                        }
+                    });
+                }
+            );
+        }
+
+    }, [state.hp, stateHandler]);
 
     return (
         <article className={['content', classes.HomePage].join(' ')}>
-            {proffesions && <WorkExperienceComponent work={proffesions} />}
+            {state.hp &&
+            <Auxx>
+                <HomePageBlock title="Work Experience" category={state.hp.work} type='profession'/>
+                <HomePageBlock title="hobbies" category={state.hp.hobbies} />
+            </Auxx>
+            }
         </article>
     )
 };

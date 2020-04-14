@@ -82,7 +82,7 @@ const ContactMeComponent = (props) => {
             return true;
         }
 
-        is_valid = utils.validators.reqireCheck(value) && is_valid;
+        is_valid = utils.validators.requireCheck(value) && is_valid;
 
         if(validationObject.rules && is_valid) {
             is_valid = validationObject.rules.map(validator => validator(value)).every(isValid => isValid === true)

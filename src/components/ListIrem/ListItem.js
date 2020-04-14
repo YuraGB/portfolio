@@ -1,5 +1,5 @@
 /**
- * Profession component
+ * List Item component
  *
  * @author Yurii Huriianov <yuhur1985@gmail.com
  * @copyright 2020
@@ -8,7 +8,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from "../../UI/Button/Button";
+import Button from "../UI/Button/Button";
+import classes from './ListItem.module.css';
 
 /**
  * ProfessionComponent
@@ -16,17 +17,17 @@ import Button from "../../UI/Button/Button";
  * @param props
  * @return {*}\
  */
-const ProfessionComponent = (props) => {
+const ListItem = (props) => {
     return (
-        <li>
+        <li className={classes.listItem}>
             {props.name}
             <Button btnType='link-right' />
         </li>
     )
 };
 
-ProfessionComponent.propTypes = {
+ListItem.propTypes = {
     name: PropTypes.string
 };
 
-export default ProfessionComponent;
+export default ListItem;

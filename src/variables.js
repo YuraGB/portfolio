@@ -11,4 +11,4 @@ const globalVariable = {
     toolbarBgColorAnimated: ' #0b0b0b'
   };
 
-  module.exports = globalVariable;
+module.exports = globalVariable;

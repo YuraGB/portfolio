@@ -9,7 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import InfoBlockComponent from "../infoBlockComponent/infoBlockComponent";
-import ProfessionComponent from "./ProfessionComponent/ProfessionComponent";
+import ListItem from "../ListIrem/ListItem";
 
 /**
  *
@@ -17,11 +17,11 @@ import ProfessionComponent from "./ProfessionComponent/ProfessionComponent";
  * @return {*}
  * @constructor
  */
-const WorkExperienceComponent = ({work}) => {
-    const list = Object.keys(work).map(e => <ProfessionComponent key={e} name={work[e].proffesion}/>);
+const HomePageBlock = ({category, title, type}) => {
+    const list = Object.keys(category).map(e => <ListItem key={e} name={category[e][type] ? category[e][type] : e }/>);
 
     return (
-        <InfoBlockComponent title='Work Experience'>
+        <InfoBlockComponent title={title}>
             <ul>
                 {
                     list
@@ -31,8 +31,10 @@ const WorkExperienceComponent = ({work}) => {
     )
 };
 
-WorkExperienceComponent.propTypes = {
-    work: PropTypes.object
+HomePageBlock.propTypes = {
+    category: PropTypes.object,
+    title: PropTypes.string,
+    type: PropTypes.string
 };
 
-export default WorkExperienceComponent;
+export default HomePageBlock;
