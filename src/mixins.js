@@ -17,7 +17,8 @@ var globalMixins = {
     PageTitleDefault: function (obj, value) {
         return {
             'font-size': '60px',
-            'color': 'grey'
+            'color': 'grey',
+            'display': 'inline-block'
         }
     },
     ButtonDefault: function (

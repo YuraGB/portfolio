@@ -25,12 +25,14 @@ const HomePageComponent = () => {
         if(!state.hp) {
             axios.get('/home page state.json')
                 .then(resp => {
+                    console.log(resp);
                     stateHandler((prevState) => {
                         return {
                             ...prevState,
                             hp: {
                                 work: resp.data.work,
-                                hobbies: resp.data.hobbies
+                                hobbies: resp.data.hobbies,
+                                weaknessesStrengths: resp.data.weaknessesStrengths
                             }
                         }
                     });
@@ -44,8 +46,9 @@ const HomePageComponent = () => {
         <article className={['content', classes.HomePage].join(' ')}>
             {state.hp &&
             <Auxx>
-                <HomePageBlock title="Work Experience" category={state.hp.work} type='profession'/>
-                <HomePageBlock title="hobbies" category={state.hp.hobbies} />
+                <HomePageBlock linkDirection='link-right' title="Work Experience" category={state.hp.work} type='profession'/>
+                <HomePageBlock linkDirection='link-left' title="hobbies" category={state.hp.hobbies} />
+                <HomePageBlock linkDirection='link-right' title="weakness && strengths" category={state.hp.weaknessesStrengths} />
             </Auxx>
             }
         </article>

@@ -6,10 +6,11 @@
     padding: 5px 20px;
     display: inline-block;
     background: bisque;
+    overflow-x: hidden;
     top: 50px;
 
     &.Success {
-        background: color( green a(10%));
+        background: color( green a(90%));
     }
 
     &.Fail {
