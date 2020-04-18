@@ -7,11 +7,13 @@
 
 import React, {useContext, useEffect} from 'react';
 
-import axios from '../../axios';
+import {fireBaseCalls} from '../../axios';
 import classes from './HomePage.module.css';
 import HomePageBlock from "../../components/HomePageBlock/HomePageBlock";
 import Context from "../../Context/context";
 import Auxx from "../../hoc/Auxx/Auxx";
+import {getBooks} from '../../apiCalls/googleApiBooks/googleBooksApiCalls'
+import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 
 /**
  * HomePageComponent
@@ -23,9 +25,8 @@ const HomePageComponent = () => {
 
     useEffect( () => {
         if(!state.hp) {
-            axios.get('/home page state.json')
+            fireBaseCalls.get('/home page state.json')
                 .then(resp => {
-                    console.log(resp);
                     stateHandler((prevState) => {
                         return {
                             ...prevState,
@@ -38,6 +39,7 @@ const HomePageComponent = () => {
                     });
                 }
             );
+            getBooks().then(console.log)
         }
 
     }, [state.hp, stateHandler]);
@@ -55,4 +57,4 @@ const HomePageComponent = () => {
     )
 };
 
-export default HomePageComponent;
+export default withErrorHandler(HomePageComponent, fireBaseCalls);

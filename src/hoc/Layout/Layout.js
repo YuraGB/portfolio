@@ -16,8 +16,8 @@ import ApplicationMessagesComponent from "../../components/ApplicationMessagesCo
 
 /**
  * Layout component
- *
- * @return component
+ * @param props
+ * @return {*} Component
  */
 const Layout = (props) => {
     const [is_directToAboutMe, directToAbouteMeHendler] = useState(false);
@@ -55,10 +55,10 @@ const Layout = (props) => {
                 <Toolbar isDirected={is_directToAboutMe} clicked={directToAboutMe}/>
                 <main className={classes.Content}>
                     {props.children}
-                    <footer>
-                        <p>copyright</p>
-                    </footer>
                 </main>
+                <footer>
+                    <span>copyright</span>
+                </footer>
             </Context.Provider>
         </Auxx>
     )
