@@ -19,7 +19,7 @@ import './App.css';
  *
  * @return {*} component
  */
-function App({location}) {
+function App() {
   return (
       <Layout>
               <Switch>
