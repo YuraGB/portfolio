@@ -16,8 +16,8 @@ import ApplicationMessagesComponent from "../../components/ApplicationMessagesCo
 
 /**
  * Layout component
- *
- * @return component
+ * @param props
+ * @return {*} Component
  */
 const Layout = (props) => {
     const [is_directToAboutMe, directToAbouteMeHendler] = useState(false);
@@ -56,6 +56,9 @@ const Layout = (props) => {
                 <main className={classes.Content}>
                     {props.children}
                 </main>
+                <footer>
+                    <span>copyright</span>
+                </footer>
             </Context.Provider>
         </Auxx>
     )

@@ -21,7 +21,7 @@ const ListItem = (props) => {
     return (
         <li className={classes.listItem}>
             {props.name}
-            <Button btnType='link-right' />
+            <Button btnType={props.link} />
         </li>
     )
 };

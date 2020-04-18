@@ -28,3 +28,13 @@
     margin: 0 10px;
     vertical-align: middle;
 }
+
+.link-left {
+    border: none;
+    color: transparent;
+    background: url("../../../assets/images/icons/fast-forward.svg");
+    background-size: contain;
+    margin: 0 10px;
+    vertical-align: middle;
+    transform: scale(-1);
+}
