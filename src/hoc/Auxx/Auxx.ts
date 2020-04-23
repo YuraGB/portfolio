@@ -12,6 +12,10 @@
  * @return {*} children of the component
  * @constructor
  */
-const Auxx = (props) => props.children;
+type Props = {
+    children: JSX.Element[] | JSX.Element,
+};
+
+const Auxx = (props: Props | any) => props.children;
 
 export default Auxx;

@@ -10,24 +10,25 @@ import React, {useContext, useEffect} from 'react';
 import {fireBaseCalls} from '../../axios';
 import classes from './HomePage.module.css';
 import HomePageBlock from "../../components/HomePageBlock/HomePageBlock";
-import Context from "../../Context/context";
+/*import {Index} from "../../store";*/
 import Auxx from "../../hoc/Auxx/Auxx";
-import {getBooks} from '../../apiCalls/googleApiBooks/googleBooksApiCalls'
+/*import {getBooks} from '../../apiCalls/googleApiBooks/googleBooksApiCalls'*/
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
+
 
 /**
  * HomePageComponent
  *
  * @return {*} component
  */
-const HomePageComponent = () => {
-    const {state, stateHandler} = useContext(Context);
-
+const HomePageComponent:React.FC = () => {
+    //const context = useContext(Context);
+/*
     useEffect( () => {
-        if(!state.hp) {
+        if (context && context.state) {
             fireBaseCalls.get('/home page state.json')
                 .then(resp => {
-                    stateHandler((prevState) => {
+                    context.stateHandler((prevState) => {
                         return {
                             ...prevState,
                             hp: {
@@ -42,17 +43,15 @@ const HomePageComponent = () => {
             getBooks().then(console.log)
         }
 
-    }, [state.hp, stateHandler]);
+    }, [state.hp, stateHandler]);*/
 
     return (
         <article className={['content', classes.HomePage].join(' ')}>
-            {state.hp &&
             <Auxx>
                 <HomePageBlock linkDirection='link-right' title="Work Experience" category={state.hp.work} type='profession'/>
                 <HomePageBlock linkDirection='link-left' title="hobbies" category={state.hp.hobbies} />
                 <HomePageBlock linkDirection='link-right' title="weakness && strengths" category={state.hp.weaknessesStrengths} />
             </Auxx>
-            }
         </article>
     )
 };

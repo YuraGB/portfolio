@@ -9,7 +9,7 @@ import React, {useContext, useState} from 'react';
 import FormContactMeComponent from "../../components/FormContactMe/FormContactMeComponent";
 import * as utils from "./utils";
 import {fireBaseCalls} from "../../axios";
-import Context from "../../Context/context";
+import{Index, ContextInterface}from "../../store";
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 
 /**
@@ -75,7 +75,7 @@ const ContactMeComponent = (props) => {
     const [isValidated, setValidationStatus] = useState(false);
     const [spinner, showSpinner] = useState(null);
     const [formFields, updateFieldsHandler] = useState(stateFields);
-    const {hideApplicationMessage} = useContext(Context);
+    const {hideApplicationMessage} = useContext(Index);
 
     const checkValidity = (value, validationObject) => {
         let is_valid = true;

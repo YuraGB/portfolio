@@ -5,14 +5,13 @@
  * @copyright 2020
  */
 
-import React, {useContext} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import {CSSTransition} from "react-transition-group";
 
 import InfoBlockComponent from "../infoBlockComponent/infoBlockComponent";
 import ListItem from "../ListIrem/ListItem";
 import './HomePageBlock-animation.css';
-import Context from "../../Context/context";
+import {HomePageBlock} from '../../store/sagas/system/types';
 
 /**
  * HomePageBlock
@@ -21,8 +20,10 @@ import Context from "../../Context/context";
  * @return {*}
  * @constructor
  */
-const HomePageBlock = ({category, title, type, linkDirection}) => {
-    const {state} = useContext(Context);
+
+
+const HomePageBlock: React.FC<HomePageBlock> = ({category, title, type, linkDirection}) => {
+
     const list = Object.keys(category)
         .map(e =>
             <ListItem
@@ -34,7 +35,7 @@ const HomePageBlock = ({category, title, type, linkDirection}) => {
     return (
         <CSSTransition
             appear
-            in={!!state.hp}
+            in={true}
             classNames='home-block'
             timeout={300}
         >
@@ -47,13 +48,6 @@ const HomePageBlock = ({category, title, type, linkDirection}) => {
             </InfoBlockComponent>
         </CSSTransition>
     )
-};
-
-HomePageBlock.propTypes = {
-    category: PropTypes.object,
-    title: PropTypes.string,
-    type: PropTypes.string,
-    linkDirection: PropTypes.string
 };
 
 export default HomePageBlock;

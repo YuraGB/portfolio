@@ -10,7 +10,7 @@ import React, {useContext, useEffect} from 'react';
 import './AboutMe.css';
 import {fireBaseCalls} from "../../axios";
 import CommentsComponent from "../../components/CommentsComponent/CommentsComponent";
-import Context from "../../Context/context";
+import{Index, ContextInterface}from "../../store";
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 
 
@@ -20,7 +20,7 @@ import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
  * @return {*} component
  */
 const AboutMeComponent = () => {
-    const {state, stateHandler} = useContext(Context);
+    const {state, stateHandler} = useContext(Index);
 
     useEffect(() => {
         if(!state.abMe) {

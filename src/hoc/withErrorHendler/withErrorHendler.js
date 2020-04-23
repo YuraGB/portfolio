@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 
 import Auxx from "../Auxx/Auxx";
 import Modal from "../../components/UI/Modal/Modal";
-import Context from "../../Context/context";
+import{Index, ContextInterface}from "../../store";
 
 /**
  * withErrorHandler
@@ -20,7 +20,7 @@ import Context from "../../Context/context";
  */
 const withErrorHandler = (WrapperComponent, axios) => {
     return class extends Component {
-        static contextType = Context;
+        static contextType = Index;
 
         constructor (props) {
             super(props);

@@ -6,10 +6,10 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Button from "../UI/Button/Button";
 import classes from './ListItem.module.css';
+import {LinkItemInterface} from '../../store/sagas/system/types';
 
 /**
  * ProfessionComponent
@@ -17,17 +17,13 @@ import classes from './ListItem.module.css';
  * @param props
  * @return {*}\
  */
-const ListItem = (props) => {
+const ListItem:React.FC<LinkItemInterface> = ({name, link}) => {
     return (
         <li className={classes.listItem}>
-            {props.name}
-            <Button btnType={props.link} />
+            {name}
+            <Button btnType={link} />
         </li>
     )
-};
-
-ListItem.propTypes = {
-    name: PropTypes.string
 };
 
 export default ListItem;

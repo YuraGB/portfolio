@@ -11,7 +11,7 @@ import {CSSTransition} from 'react-transition-group'
 
 import './Toolbar.css';
 import NavigationLink from "../Navigation/NavigationLink/NavigationLink";
-import Context from "../../Context/context";
+import{Index, ContextInterface}from "../../store";
 
 /**
  * Toolbar
@@ -20,7 +20,7 @@ import Context from "../../Context/context";
  * @return {*} component
  */
 const Toolbar = (props) => {
-    const {directToAboutMe} = useContext(Context);
+    const {directToAboutMe} = useContext(Index);
 
     return (
         <CSSTransition

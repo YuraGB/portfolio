@@ -11,7 +11,7 @@ import {CSSTransition} from "react-transition-group";
 import classes from './Modal.module.css';
 import Auxx from "../../../hoc/Auxx/Auxx";
 import Backdrop from "../Backdrop/Backdrop";
-import Context from "../../../Context/context";
+import {Index, ContextInterface} from "../../../store";
 import './modal-animation.css'
 
 
@@ -22,7 +22,7 @@ import './modal-animation.css'
  * @return {*} component
  */
 const Modal = React.memo((props) => {
-    const {showModal, onOpenModalHandler} = useContext(Context);
+    const {showModal, onOpenModalHandler} = useContext(Index);
     return (
         <Auxx>
             <CSSTransition
