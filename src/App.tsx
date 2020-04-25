@@ -6,11 +6,27 @@
  */
 
 import React from 'react';
-import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
+import {Route, Switch, Redirect, withRouter, BrowserRouter} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware, combineReducers} from "redux";
+import createSagaMiddleware from 'redux-saga';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import Layout from "./hoc/Layout/Layout";
 import HomePageComponent from "./conteiners/HomePageComponent/HomePageComponent";
 import './App.css';
+import {homePageReducer} from './store/reducers';
+import {watchHP} from './store/sagas';
+
+const rootReducer = combineReducers({
+       hp:homePageReducer
+    });
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
+
+sagaMiddleware.run(watchHP);
 
 /**
  * App the main wrapper
@@ -19,12 +35,16 @@ import './App.css';
  */
 const App:React.FC = () => {
   return (
-      <Layout>
-              <Switch>
-                  <Route path='/' exact component={HomePageComponent}/>
-                  <Redirect to='/'/>
-              </Switch>
-      </Layout>
+      <Provider store={store}>
+          <BrowserRouter>
+              <Layout>
+                  <Switch>
+                      <Route path='/' exact component={HomePageComponent}/>
+                      <Redirect to='/'/>
+                  </Switch>
+              </Layout>
+          </BrowserRouter>
+      </Provider>
   );
 };
 

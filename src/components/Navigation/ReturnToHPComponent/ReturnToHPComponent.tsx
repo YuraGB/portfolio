@@ -6,10 +6,11 @@
  */
 
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {withRouter, RouteComponentProps} from 'react-router-dom';
 
 import NavigationLink from "../NavigationLink/NavigationLink";
 import classes from './ReturnToHPComponent.module.css';
+import {ReturnHPInterface} from "../../../store/sagas/system/types";
 
 /**
  * ReturnToHPComponent icon
@@ -17,7 +18,7 @@ import classes from './ReturnToHPComponent.module.css';
  * @param {*} props
  * @return {*} component
  */
-const ReturnToHPComponent = ({ location }) => {
+const ReturnToHPComponent:React.FC <ReturnHPInterface & RouteComponentProps> = ({location }) => {
     let path = location.pathname;
     let component = (
         <NavigationLink className={classes.HomePageLink} link='/'>

@@ -5,15 +5,16 @@
  * @copyright 2020
  */
 
-import React, {useContext, useEffect} from 'react';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 
 import {fireBaseCalls} from '../../axios';
 import classes from './HomePage.module.css';
 import HomePageBlock from "../../components/HomePageBlock/HomePageBlock";
-/*import {Index} from "../../store";*/
 import Auxx from "../../hoc/Auxx/Auxx";
-/*import {getBooks} from '../../apiCalls/googleApiBooks/googleBooksApiCalls'*/
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
+import {Work} from "../../store/sagas/system/types";
+import {fetchHPActionCreator} from '../../store/actions/actionCreators'
 
 
 /**
@@ -22,6 +23,14 @@ import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
  * @return {*} component
  */
 const HomePageComponent:React.FC = () => {
+    const hpState:Work = useSelector(state => state.hp);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (!hpState.work) {
+            dispatch(fetchHPActionCreator());
+        }
+    }, [dispatch, hpState.work]);
     //const context = useContext(Context);
 /*
     useEffect( () => {

@@ -7,7 +7,7 @@
 
 export interface HomePageState {
         hobbies: {},
-        work: {},
+        work: {Work} | {},
         weaknessesStrengths: WeaknessesStrengths | {}
 }
 
@@ -51,7 +51,7 @@ export interface NaveLinkInterface {
     children: ChildrenType
 }
 
-export type ChildrenType = JSX.Element[] | JSX.Element | string;
+export type ChildrenType = JSX.Element[] | JSX.Element | string | null;
 
 export interface ToolbarInterface {
     clicked: ()=> void,
@@ -63,4 +63,26 @@ export interface Generator<T = unknown, TReturn = any, TNext = unknown>
     return(value: TReturn): IteratorResult<T, TReturn>;
     throw(e: any): IteratorResult<T, TReturn>;
     [Symbol.iterator](): Generator<T, TReturn, TNext>;
+}
+
+export interface ReturnHPInterface {
+    location: {
+        pathname:string
+    }
+}
+
+export interface ModalInterface {
+    show: boolean,
+    children: ChildrenType,
+    modalClosed: ()=> void
+}
+
+export type stateType = {
+    error:null | {message:string}
+}
+
+export type Work = {
+    [key:string]: {
+        profission: string
+    }
 }

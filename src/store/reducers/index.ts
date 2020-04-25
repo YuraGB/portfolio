@@ -1,0 +1,3 @@
+export {
+    homePageReducer
+} from './homePage';

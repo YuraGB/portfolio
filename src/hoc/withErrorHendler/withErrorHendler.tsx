@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 
 import Auxx from "../Auxx/Auxx";
 import Modal from "../../components/UI/Modal/Modal";
-import{Index, ContextInterface}from "../../store";
+import {stateType} from '../../store/sagas/system/types';
 
 /**
  * withErrorHandler
@@ -20,8 +20,8 @@ import{Index, ContextInterface}from "../../store";
  */
 const withErrorHandler = (WrapperComponent, axios) => {
     return class extends Component {
-        static contextType = Index;
-
+        readonly reqInt:{any};
+        readonly resInt:{any};
         constructor (props) {
             super(props);
 
@@ -31,7 +31,6 @@ const withErrorHandler = (WrapperComponent, axios) => {
             });
 
             this.resInt = axios.interceptors.response.use(res => res, error => {
-                this.context.onOpenModalHandler();
                 this.setState({error: error})
             });
         };
@@ -41,7 +40,7 @@ const withErrorHandler = (WrapperComponent, axios) => {
             axios.interceptors.request.eject(this.reqInt);
         };
 
-        state = {
+        state:stateType = {
             error: null
         };
 

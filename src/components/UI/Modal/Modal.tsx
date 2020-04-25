@@ -12,6 +12,7 @@ import classes from './Modal.module.css';
 import Auxx from "../../../hoc/Auxx/Auxx";
 import Backdrop from "../Backdrop/Backdrop";
 import './modal-animation.css';
+import {ModalInterface} from '../../../store/sagas/system/types';
 
 /**
  * Modal
@@ -19,7 +20,7 @@ import './modal-animation.css';
  * @param props
  * @return {*} component
  */
-const Modal:React.FC<JSX.Element[] | JSX.Element> = React.memo(({children}) => {
+const Modal:React.FC<ModalInterface> = React.memo(({children, show, modalClosed}) => {
     //const {showModal, onOpenModalHandler} = useContext(Index);
     return (
         <Auxx>
@@ -36,8 +37,8 @@ const Modal:React.FC<JSX.Element[] | JSX.Element> = React.memo(({children}) => {
             </section>
             </CSSTransition>
             <Backdrop
-                show={false}
-                clicked={()=>{}}
+                show={show}
+                clicked={modalClosed}
             />
         </Auxx>
     )

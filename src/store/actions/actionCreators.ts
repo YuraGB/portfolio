@@ -7,4 +7,11 @@ export const setHPActionCreator = (HPState:types.HomePageState):Action => {
         type: actyonTypes.SET_HOMEPAGE_STATE,
         payload: HPState
     }
-}
+};
+
+export const fetchHPActionCreator = () => {
+    console.log("ssss");
+    return {
+        type: actyonTypes.FETCH_HOMEPAGE_STATE
+    }
+};
