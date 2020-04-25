@@ -44,13 +44,31 @@ const HomePageComponent:React.FC = () => {
         }
 
     }, [state.hp, stateHandler]);*/
+const state = {
+    hobbies: {
+        dancing: {
+            bachata: true
+        }
+    },
+    work: {
+        "TOV SAUZ": {
+            profession: "accountant"
+        },
+        "TOV TERKO": {
+            profession: "accountant"
+        }
+    },
+    weaknessesStrengths: {
+        angry: "angry"
+    }
+}
 
     return (
         <article className={['content', classes.HomePage].join(' ')}>
             <Auxx>
-                <HomePageBlock linkDirection='link-right' title="Work Experience" category={state.hp.work} type='profession'/>
-                <HomePageBlock linkDirection='link-left' title="hobbies" category={state.hp.hobbies} />
-                <HomePageBlock linkDirection='link-right' title="weakness && strengths" category={state.hp.weaknessesStrengths} />
+                <HomePageBlock linkDirection='link-right' title="Work Experience" category={state.work} type='profession'/>
+                <HomePageBlock linkDirection='link-left' title="hobbies" category={state.hobbies} />
+                <HomePageBlock linkDirection='link-right' title="weakness && strengths" category={state.weaknessesStrengths} />
             </Auxx>
         </article>
     )

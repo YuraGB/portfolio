@@ -7,9 +7,9 @@
 
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import PropTypes from 'prop-types';
 
 import classes from "./NavigationLink.module.css";
+import {NaveLinkInterface} from "../../../store/sagas/system/types";
 
 /**
  * NavigationLink
@@ -17,19 +17,15 @@ import classes from "./NavigationLink.module.css";
  * @param {*} props
  * @returns {*} component
  */
-const NavigationLink = (props) => {
+const NavigationLink:React.FC<NaveLinkInterface> = ({link, className, children}) => {
     return (
         <NavLink
-            to={props.link}
+            to={link}
             exact
-            className={[classes.NavigationLink, props.className ? props.className : ''].join(' ')}
+            className={[classes.NavigationLink, className ? className : ''].join(' ')}
             activeClassName={classes.active}
-            >{props.children}</NavLink>
+            >{children}</NavLink>
     )
-};
-
-NavigationLink.propTypes = {
-  link: PropTypes.string
 };
 
 export default NavigationLink;

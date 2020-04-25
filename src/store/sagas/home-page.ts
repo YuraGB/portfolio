@@ -1,14 +1,23 @@
-
+/**
+ * HomePage Saga
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
 import {put} from 'redux-saga/effects';
 
 import {fireBaseCalls} from "../../axios";
-import {HomePageState} from './system/types';
+import {Generator} from './system/types';
 
-export function* initHPState<T extends {}>() {
+/**
+ * initHPState generator
+ * @return void
+ */
+export function* initHPState():Generator {
     try {
-        const response:Response = yield fireBaseCalls.get('/home page state');
+        const response:any = yield fireBaseCalls.get('/home page state');
         yield put(response);
-    } catch (e:Error) {
+    } catch (e) {
         console.log(e.message);
     }
-};
+}

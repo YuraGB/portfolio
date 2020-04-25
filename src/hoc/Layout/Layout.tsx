@@ -24,7 +24,7 @@ const Layout:React.FC = (props) => {
         <Auxx>
                 <ReturnToHPComponent />
                 <ApplicationMessagesComponent />
-                <Toolbar  clicked={}/>
+                <Toolbar clicked={()=>{}}/>
                 <main className={classes.Content}>
                     {props.children}
                 </main>

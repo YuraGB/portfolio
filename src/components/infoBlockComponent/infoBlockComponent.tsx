@@ -6,9 +6,9 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import classes from './infoBlock.module.css';
+import {InfoBlockComponentInterface} from '../../store/sagas/system/types'
 
 /**
  * InfoBlockComponent
@@ -16,17 +16,13 @@ import classes from './infoBlock.module.css';
  * @param props
  * @return {*} Component
  */
-const InfoBlockComponent = (props) => {
+const InfoBlockComponent:React.FC<InfoBlockComponentInterface> = ({title, children}) => {
     return (
         <section className={classes.Block} style={{background: 'purple'}}>
-            <h3>{props.title}</h3>
-            {props.children}
+            <h3>{title}</h3>
+            {children}
         </section>
     )
-};
-
-InfoBlockComponent.propTypes = {
-    title: PropTypes.string
 };
 
 export default InfoBlockComponent;

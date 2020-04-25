@@ -5,13 +5,13 @@
  * @copyright 2020
  */
 
-import React, {useContext} from 'react';
+import React from 'react';
 import {CSSTransition} from 'react-transition-group'
 
 
 import './Toolbar.css';
 import NavigationLink from "../Navigation/NavigationLink/NavigationLink";
-import{Index, ContextInterface}from "../../store";
+import {ToolbarInterface} from '../../store/sagas/system/types'
 
 /**
  * Toolbar
@@ -19,8 +19,8 @@ import{Index, ContextInterface}from "../../store";
  * @param {*} props
  * @return {*} component
  */
-const Toolbar = (props) => {
-    const {directToAboutMe} = useContext(Index);
+const Toolbar:React.FC<ToolbarInterface> = ({clicked}) => {
+    //const {directToAboutMe} = useContext(Index);
 
     return (
         <CSSTransition
@@ -29,7 +29,7 @@ const Toolbar = (props) => {
             appear={true}
             timeout={1200}
         >
-            <section className='Toolbar' onClick={directToAboutMe}>
+            <section className='Toolbar' onClick={clicked}>
                     <NavigationLink className='nav_link' link='/aboutMe'>
                         Me
                     </NavigationLink>
