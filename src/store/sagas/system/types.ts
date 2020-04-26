@@ -16,16 +16,22 @@ export interface WeaknessesStrengths {
     'like games': string
 }
 
-export interface CommentsInterface {
+export type CommentInterface = {
     authorsComment: string,
     authorsEmail: string,
     authorsName: string,
     date: number
 }
 
+export type CommentType = {
+        id: string
+        commentData: CommentInterface
+    }[]
+
+
 export interface Action {
     type: string,
-    payload: object
+    payload: object | any
 }
 
 export interface HomePageBlockInterface {
@@ -56,6 +62,23 @@ export type ChildrenType = JSX.Element[] | JSX.Element | string | null;
 export interface ToolbarInterface {
     clicked: ()=> void,
 }
+export type elementConfig = [
+    {
+        value: string
+    }
+];
+
+export interface UIInputInterface {
+    invalid: boolean,
+    touched: boolean,
+    shouldValidate: boolean,
+    changed: () => void,
+    name: string,
+    elementType: string,
+    elementConfig: {options:elementConfig},
+    value: string,
+    label:string
+}
 
 export interface Generator<T = unknown, TReturn = any, TNext = unknown>
     extends Iterator<T, TReturn, TNext> {
@@ -70,6 +93,12 @@ export interface ReturnHPInterface {
         pathname:string
     }
 }
+
+export interface BackdropInterface {
+    show: boolean;
+    clicked: () => void
+}
+
 
 export interface ModalInterface {
     show: boolean,

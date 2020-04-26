@@ -1,5 +1,5 @@
 /**
- * Work Experience component
+ * Home Page block component
  *
  * @author Yurii Huriianov <yuhur1985@gmail.com
  * @copyright 2020
@@ -11,7 +11,7 @@ import {CSSTransition} from "react-transition-group";
 import InfoBlockComponent from "../infoBlockComponent/infoBlockComponent";
 import ListItem from "../ListIrem/ListItem";
 import './HomePageBlock-animation.css';
-import {HomePageBlockInterface} from '../../store/sagas/system/types';
+import {HomePageBlockInterface, ChildrenType} from '../../store/sagas/system/types';
 
 /**
  * HomePageBlock
@@ -20,8 +20,6 @@ import {HomePageBlockInterface} from '../../store/sagas/system/types';
  * @return {*}
  * @constructor
  */
-
-
 const HomePageBlock: React.FC<HomePageBlockInterface> = (
     {
         category,
@@ -30,13 +28,19 @@ const HomePageBlock: React.FC<HomePageBlockInterface> = (
         linkDirection
     }
         ) => {
-    const list = Object.keys(category)
-        .map(e =>
-            <ListItem
-                key={e}
-                link={linkDirection}
-                name={type ? category[e][type] : e }
-            />);
+    let list:ChildrenType;
+
+    if (category) {
+        list = Object.keys(category)
+            .map(e =>
+                <ListItem
+                    key={e}
+                    link={linkDirection}
+                    name={type ? category[e][type] : e}
+                />);
+    } else {
+        list = null;
+    }
 
     return (
         <CSSTransition

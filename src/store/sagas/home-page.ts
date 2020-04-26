@@ -8,7 +8,7 @@ import {put} from 'redux-saga/effects';
 
 import {fireBaseCalls} from "../../axios";
 import {Generator} from './system/types';
-import {setHPActionCreator} from '../actions/actionCreators'
+import {setHPActionCreator} from '../actions/actionCreators';
 
 /**
  * initHPState generator
@@ -17,7 +17,7 @@ import {setHPActionCreator} from '../actions/actionCreators'
 export function* initHPState():Generator {
     try {
         const response:any = yield fireBaseCalls.get('/home page state.json');
-        yield put(setHPActionCreator(response));
+        yield put(setHPActionCreator(response.data));
     } catch (e) {
         console.log(e.message);
     }

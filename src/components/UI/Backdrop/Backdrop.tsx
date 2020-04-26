@@ -5,9 +5,9 @@
  * @copyright 2020
  */
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import classes from './Backdrop.module.css';
+import {BackdropInterface} from '../../../store/sagas/system/types';
 
 /**
  * Backdrop
@@ -15,20 +15,15 @@ import classes from './Backdrop.module.css';
  * @param props
  * @return {*} component
  */
-const Backdrop = (props) => {
+const Backdrop:React.FC<BackdropInterface> = ({clicked, show}) => {
     return (
-        props.show ?
+        show ?
             <div
                 className={classes.Backdrop}
-                onClick={props.clicked}
+                onClick={clicked}
             ></div> :
             null
     )
-};
-
-Backdrop.propTypes = {
-    show: PropTypes.bool,
-    clicked: PropTypes.func
 };
 
 export default Backdrop;

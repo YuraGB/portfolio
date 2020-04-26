@@ -9,7 +9,7 @@ const CommentsComponent = (props) => {
     const {comments, commentsSize = 3} = props;
     let components = <Spinner />;
 
-    if(comments) {
+    if(comments.length) {
         comments.length = comments.length > commentsSize ?
             comments.length = commentsSize : comments.length;
 
