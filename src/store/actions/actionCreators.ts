@@ -4,7 +4,6 @@
  * @author Yurii Huriianov <yuhur1985@gmail.com
  * @copyright 2020
  */
-nhfccf rfr d htfkt  f yt d uhblt )
 
 import * as actyonTypes from './actions';
 import {Action} from "../sagas/system/types";
