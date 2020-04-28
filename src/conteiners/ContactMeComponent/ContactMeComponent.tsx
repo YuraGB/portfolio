@@ -5,20 +5,21 @@
  * @copyright 2020
  */
 
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+
+import {saveCommentsActionCreator} from '../../store/actions/actionCreators';
 import FormContactMeComponent from "../../components/FormContactMe/FormContactMeComponent";
 import * as utils from "./utils";
 import {fireBaseCalls} from "../../axios";
-import{Index, ContextInterface}from "../../store";
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 
 /**
  * ContactMeComponent page
  *
- * @param {*}props
  * @return {*} component
  */
-const ContactMeComponent = (props) => {
+const ContactMeComponent = () => {
     const stateFields = {
         name: {
             elementType: 'input',
@@ -71,11 +72,11 @@ const ContactMeComponent = (props) => {
             }
         },
     };
+    const dispatch = useDispatch();
+    const spinner = useSelector(state => state.spinner);
 
     const [isValidated, setValidationStatus] = useState(false);
-    const [spinner, showSpinner] = useState(null);
     const [formFields, updateFieldsHandler] = useState(stateFields);
-    const {hideApplicationMessage} = useContext(Index);
 
     const checkValidity = (value, validationObject) => {
         let is_valid = true;
@@ -113,22 +114,14 @@ const ContactMeComponent = (props) => {
 
     const onSubmitHandler = () => {
         if (isValidated) {
-            showSpinner(true);
-            fireBaseCalls.post('/comments.json', {
+            const data = {
                 authorsName: formFields.name.value,
                 authorsEmail: formFields.email.value,
                 authorsComment: formFields.textarea.value,
                 date: new Date().getTime()
-            })
-            .then(resp => {
-                hideApplicationMessage(resp.statusText === 'OK' ?
-                    {text:'The Message was saved', status: "Success" } :
-                    {text:'Something went wrong', status: "Fail" });
-                showSpinner(false);
-                setValidationStatus(false);
-                updateFieldsHandler(stateFields)
-            })
-            .catch(e => showSpinner(false))
+            };
+
+            dispatch(saveCommentsActionCreator(data));
         }
     };
 

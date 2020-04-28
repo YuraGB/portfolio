@@ -1,14 +1,31 @@
+/**
+ * Comments container
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
+
 import React from 'react';
 
 import Comment from "./CommentComponent/CommentComponent";
 import Spinner from "../Spinner/Spinner";
 import NavigationLink from "../Navigation/NavigationLink/NavigationLink";
 import Button from "../UI/Button/Button";
+import {CommentsComponentInterface} from '../../store/sagas/system/types';
 
-const CommentsComponent = (props) => {
-    const {comments, commentsSize = 3} = props;
-    let components = <Spinner />;
-
+/**
+ * CommentsComponent
+ *
+ * @param props
+ * @return {*}
+ * @constructor
+ */
+const CommentsComponent:React.FC<CommentsComponentInterface> = (
+    {
+        comments,
+        commentsSize= 3
+    }) => {
+    let components;
     if(comments.length) {
         comments.length = comments.length > commentsSize ?
             comments.length = commentsSize : comments.length;
@@ -17,10 +34,12 @@ const CommentsComponent = (props) => {
             <Comment
                 key={comment.id}
                 date={comment.commentData.date}
-                text={comment.commentData.authorsComment}
-                author={comment.commentData.authorsName}
+                authorsComment={comment.commentData.authorsComment}
+                authorsName={comment.commentData.authorsName}
             />)
         );
+    } else {
+        components = <Spinner />
     }
 
     return (

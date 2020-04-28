@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import classes from "./FormContactMeComponent.module.css";
 import Button from "../UI/Button/Button";
@@ -15,49 +14,56 @@ import {fireBaseCalls} from "../../axios";
 import Input from "../UI/Input/Input";
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 import Spinner from "../Spinner/Spinner";
+import {FormInterface} from "../../store/sagas/system/types"
 
 /**
- * Form component
+ * FormContactMeComponent
  *
- * @param {*} props
- * @return {*} component
+ * @param formFields
+ * @param onChangeHandler
+ * @param isValidated
+ * @param spinner
+ * @param onSubmitHandler
+ * @constructor
  */
-export const FormContactMeComponent = (props) => {
-    let fields = null;
-
-    if(props.formFields) {
-        fields = utils.formFieldsToArray(props.formFields).map(field => (
+export const FormContactMeComponent:React.FC<FormInterface> = (
+    {
+        formFields,
+        onChangeHandler,
+        isValidated,
+        spinner,
+        onSubmitHandler
+    }) => {
+    let fields;
+    console.log(spinner);
+    if(formFields) {
+        fields = utils.formFieldsToArray(formFields).map(field => (
             <Input
                 key={field.name}
                 elementType={field.elementType}
                 label={field.label}
                 name={field.name}
                 elementConfig={field.elementConfig}
-                changed={(e) => props.onChangeHandler(e, field.id)}
+                changed={(e) => onChangeHandler(e, field.id)}
                 touched={field.touched}
                 invalid={!field.valid}
                 shouldValidate={field.elementConfig.validation.required}
             />
         ));
+    } else {
+        fields = null;
     }
 
     return (
         <form className={classes.ContactForm} onSubmit={(e) => e.preventDefault()}>
-            {props.spinner ? <Spinner/> : fields}
+            {spinner ? <Spinner/> : fields}
             <Button
                 btnType='Success'
-                disabled={props.isValidated && !props.spinner}
-                clicked={props.onSubmitHandler}
+                disabled={isValidated && !spinner}
+                clicked={onSubmitHandler}
             >Send</Button>
         </form>
     )
-};
-
-FormContactMeComponent.propTypes = {
-    formFields: PropTypes.object,
-    isValidated:PropTypes.bool,
-    onSubmitHandler: PropTypes.func,
-    onChangeHandler: PropTypes.func
 };
 
 export default withErrorHandler(FormContactMeComponent, fireBaseCalls);

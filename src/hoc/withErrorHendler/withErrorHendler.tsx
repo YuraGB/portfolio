@@ -18,7 +18,7 @@ import {stateType} from '../../store/sagas/system/types';
  * @param {*} axios requests hendler
  * @return component
  */
-const withErrorHandler = (WrapperComponent, axios) => {
+const withErrorHandler:any = (WrapperComponent, axios) => {
     return class extends Component {
         readonly reqInt:{any};
         readonly resInt:{any};

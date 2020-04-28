@@ -14,17 +14,19 @@ import {UIInputInterface} from '../../../store/sagas/system/types';
  * @param {*} props
  * @return {*} component
  */
-const Input:React.FC<UIInputInterface> = ({
-                   invalid,
-                   touched,
-                   shouldValidate,
-                   changed,
-                   name,
-                   elementType,
-                   elementConfig,
-                   value,
-                   label
-}) => {
+const Input:React.FC<UIInputInterface> = (
+    {
+        invalid,
+        touched,
+        shouldValidate,
+        changed,
+        name,
+        elementType,
+        elementConfig,
+        value,
+        label
+    }
+    ) => {
     let inputElement;
     const inputClasses = [classes.InputElement];
 

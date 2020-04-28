@@ -20,8 +20,7 @@ import {fetchCommentsActionCreator} from '../../store/actions/actionCreators';
  * @return {*} component
  */
 const AboutMeComponent = () => {
-    const comments = useSelector(state => {
-        return state.comments});
+    const comments = useSelector(state => state.comments);
     const dispatch = useDispatch();
 
     useEffect(() => {

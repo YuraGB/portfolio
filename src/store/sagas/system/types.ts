@@ -18,9 +18,18 @@ export interface WeaknessesStrengths {
 
 export type CommentInterface = {
     authorsComment: string,
-    authorsEmail: string,
+    authorsEmail?: string,
     authorsName: string,
     date: number
+}
+
+export interface CommentsComponentInterface {
+    comments: {
+        id: number
+        commentData: CommentInterface,
+        length: number
+    }[],
+    commentsSize?: number
 }
 
 export type CommentType = {
@@ -62,9 +71,13 @@ export type ChildrenType = JSX.Element[] | JSX.Element | string | null;
 export interface ToolbarInterface {
     clicked: ()=> void,
 }
+
 export type elementConfig = [
     {
-        value: string
+        value: string,
+        validation: {
+            required: boolean
+        }
     }
 ];
 
@@ -72,12 +85,20 @@ export interface UIInputInterface {
     invalid: boolean,
     touched: boolean,
     shouldValidate: boolean,
-    changed: () => void,
+    changed: (e:any) => void,
     name: string,
     elementType: string,
     elementConfig: {options:elementConfig},
-    value: string,
-    label:string
+    value?: string,
+    label:string,
+    isValidated?:boolean
+}
+
+export interface UIButtonInterface {
+    disabled?: boolean,
+    btnType: string,
+    clicked?: () => void,
+    children?: ChildrenType
 }
 
 export interface Generator<T = unknown, TReturn = any, TNext = unknown>
@@ -99,7 +120,6 @@ export interface BackdropInterface {
     clicked: () => void
 }
 
-
 export interface ModalInterface {
     show: boolean,
     children: ChildrenType,
@@ -114,4 +134,21 @@ export type Work = {
     [key:string]: {
         profission: string
     }
+}
+
+export interface systemMessages {
+    message?: Message
+}
+
+export type Message = {
+    text: string,
+    status: string
+}
+
+export interface FormInterface {
+   formFields: UIInputInterface;
+    onChangeHandler: (e:any, id:number) => void;
+    isValidated?: boolean | any;
+    spinner: boolean;
+    onSubmitHandler: () => void;
 }
