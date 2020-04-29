@@ -12,6 +12,7 @@ import classes from './Layout.module.css';
 import Toolbar from "../../components/Toolbar/Toolbar";
 import ReturnToHPComponent from "../../components/Navigation/ReturnToHPComponent/ReturnToHPComponent";
 import Context from "../../Context/context";
+import FooterComponent from "../../components/Footer/FooterComponent";
 import ApplicationMessagesComponent from "../../components/ApplicationMessagesComponent/ApplicationMessagesComponent";
 
 /**
@@ -56,9 +57,7 @@ const Layout = (props) => {
                 <main className={classes.Content}>
                     {props.children}
                 </main>
-                <footer>
-                    <span>copyright</span>
-                </footer>
+                <FooterComponent/>
             </Context.Provider>
         </Auxx>
     )

@@ -150,6 +150,7 @@
     "postcss-mixins": "^6.2.3",
     "postcss-nested": "^4.2.1",
     "postcss-simple-vars": "^5.0.2",
-    "resolve": "^1.15.0"
+    "resolve": "^1.15.0",
+    "social-media-icons-react": "^1.0.10"
   }
 }
