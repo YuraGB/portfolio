@@ -9,7 +9,7 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 
 import classes from "./NavigationLink.module.css";
-import {INaveLinkInterface} from "../../../store/sagas/system/types";
+import {INaveLinkInterface} from "../../../system/types";
 
 /**
  * NavigationLink

@@ -7,7 +7,7 @@
 import React from 'react';
 
 import classes from './Backdrop.module.css';
-import {IBackdropInterface} from '../../../store/sagas/system/types';
+import {IBackdropInterface} from '../../../system/types';
 
 /**
  * Backdrop

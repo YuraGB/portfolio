@@ -8,7 +8,7 @@
 import React from 'react';
 
 import classes from './infoBlock.module.css';
-import {IInfoBlockComponentInterface} from '../../store/sagas/system/types'
+import {IInfoBlockComponentInterface} from '../../system/types'
 
 /**
  * InfoBlockComponent

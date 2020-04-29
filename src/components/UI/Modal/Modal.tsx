@@ -12,7 +12,7 @@ import classes from './Modal.module.css';
 import Auxx from "../../../hoc/Auxx/Auxx";
 import Backdrop from "../Backdrop/Backdrop";
 import './modal-animation.css';
-import {IModalInterface} from '../../../store/sagas/system/types';
+import {IModalInterface} from '../../../system/types';
 
 /**
  * Modal

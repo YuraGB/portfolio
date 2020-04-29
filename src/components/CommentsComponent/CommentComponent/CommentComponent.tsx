@@ -7,7 +7,7 @@
 import React from 'react';
 
 import classes from './CommentComponent.module.css'
-import {ICommentInterface} from '../../../store/sagas/system/types';
+import {ICommentInterface} from '../../../system/types';
 
 /**
  * CommentComponent

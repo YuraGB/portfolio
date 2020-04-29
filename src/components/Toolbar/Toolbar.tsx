@@ -11,7 +11,7 @@ import {CSSTransition} from 'react-transition-group'
 
 import './Toolbar.css';
 import NavigationLink from "../Navigation/NavigationLink/NavigationLink";
-import {IToolbarInterface} from '../../store/sagas/system/types'
+import {IToolbarInterface} from '../../system/types'
 
 /**
  * Toolbar

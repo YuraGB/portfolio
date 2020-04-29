@@ -11,7 +11,7 @@ import {CSSTransition} from "react-transition-group";
 import InfoBlockComponent from "../infoBlockComponent/infoBlockComponent";
 import ListItem from "../ListIrem/ListItem";
 import './HomePageBlock-animation.css';
-import {IHomePageBlockInterface, ChildrenType} from '../../store/sagas/system/types';
+import {IHomePageBlockInterface, ChildrenType} from '../../system/types';
 
 /**
  * HomePageBlock

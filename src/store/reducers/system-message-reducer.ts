@@ -6,7 +6,7 @@
  */
 
 import * as actionTypes from  '../actions/actions';
-import {IAction, Message} from '../sagas/system/types';
+import {IAction, Message} from '../../system/types';
 
 const initHPState:Message | {} = {};
 

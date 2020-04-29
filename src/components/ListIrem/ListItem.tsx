@@ -9,7 +9,7 @@ import React from 'react';
 
 import Button from "../UI/Button/Button";
 import classes from './ListItem.module.css';
-import {ILinkItemInterface} from '../../store/sagas/system/types';
+import {ILinkItemInterface} from '../../system/types';
 
 /**
  * ProfessionComponent

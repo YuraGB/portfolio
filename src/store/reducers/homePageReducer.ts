@@ -6,7 +6,7 @@
  */
 
 import * as actionTypes from  '../actions/actions';
-import {IAction, IHomePageState} from '../sagas/system/types';
+import {IAction, IHomePageState} from '../../system/types';
 import {mergeDeep} from '../../utills/deepMerge';
 
 const initHPState:IHomePageState | {} = {};

@@ -10,7 +10,7 @@ import {withRouter, RouteComponentProps} from 'react-router-dom';
 
 import NavigationLink from "../NavigationLink/NavigationLink";
 import classes from './ReturnToHPComponent.module.css';
-import {IReturnHPInterface} from "../../../store/sagas/system/types";
+import {IReturnHPInterface} from "../../../system/types";
 
 /**
  * ReturnToHPComponent icon

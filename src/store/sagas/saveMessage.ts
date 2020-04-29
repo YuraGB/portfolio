@@ -7,7 +7,7 @@
 import {put} from 'redux-saga/effects';
 
 import {fireBaseCalls} from "../../axios";
-import {Generator} from './system/types';
+import {Generator} from '../../system/types';
 import {setSystemMessage,spinnerStatus} from '../actions/actionCreators';
 
 /**

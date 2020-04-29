@@ -6,7 +6,7 @@
  */
 
 import * as actionTypes from  '../actions/actions';
-import {IAction, CommentType} from '../sagas/system/types';
+import {IAction, CommentType} from '../../system/types';
 
 const initHPState:CommentType | [] = [];
 

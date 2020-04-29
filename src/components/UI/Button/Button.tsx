@@ -8,7 +8,7 @@
 import React from 'react';
 
 import classes from './Buttom.module.css';
-import {IUIButtonInterface} from '../../../store/sagas/system/types';
+import {IUIButtonInterface} from '../../../system/types';
 
 /**
  * Button

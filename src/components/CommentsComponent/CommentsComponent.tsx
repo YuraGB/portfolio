@@ -11,7 +11,7 @@ import Comment from "./CommentComponent/CommentComponent";
 import Spinner from "../Spinner/Spinner";
 import NavigationLink from "../Navigation/NavigationLink/NavigationLink";
 import Button from "../UI/Button/Button";
-import {ICommentsComponentInterface} from '../../store/sagas/system/types';
+import {ICommentsComponentInterface} from '../../system/types';
 
 /**
  * CommentsComponent

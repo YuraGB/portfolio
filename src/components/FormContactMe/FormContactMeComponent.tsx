@@ -14,7 +14,7 @@ import {fireBaseCalls} from "../../axios";
 import Input from "../UI/Input/Input";
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 import Spinner from "../Spinner/Spinner";
-import {IFormInterface} from "../../store/sagas/system/types"
+import {IFormInterface} from "../../system/types"
 
 /**
  * FormContactMeComponent

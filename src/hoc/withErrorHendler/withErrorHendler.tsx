@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 
 import Auxx from "../Auxx/Auxx";
 import Modal from "../../components/UI/Modal/Modal";
-import {stateType} from '../../store/sagas/system/types';
+import {stateType} from '../../system/types';
 
 /**
  * withErrorHandler

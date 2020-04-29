@@ -7,7 +7,7 @@
 import React from 'react';
 
 import classes from './Input.module.css';
-import {IUIInputInterface} from '../../../store/sagas/system/types';
+import {IUIInputInterface} from '../../../system/types';
 
 /**
  * Input UI component

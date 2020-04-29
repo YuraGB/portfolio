@@ -6,7 +6,7 @@
  */
 
 import * as actionTypes from  '../actions/actions';
-import {IAction} from '../sagas/system/types';
+import {IAction} from '../../system/types';
 
 const initHPState:boolean = false;
 

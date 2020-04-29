@@ -6,8 +6,8 @@
  */
 
 import * as actyonTypes from './actions';
-import {IAction, ICommentInterface, Message} from "../sagas/system/types";
-import * as types from '../sagas/system/types';
+import {IAction, ICommentInterface, Message} from "../../system/types";
+import * as types from '../../system/types';
 
 export const setHPActionCreator = (HPState:types.IHomePageState):IAction => {
     return {

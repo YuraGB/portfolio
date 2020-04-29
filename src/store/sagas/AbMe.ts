@@ -8,7 +8,7 @@
 import {put} from 'redux-saga/effects';
 
 import {fireBaseCalls} from "../../axios";
-import {Generator} from './system/types';
+import {Generator} from '../../system/types';
 import {sethCommentsActionCreator} from '../actions/actionCreators';
 
 /**

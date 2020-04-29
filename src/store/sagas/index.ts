@@ -4,7 +4,7 @@ import {initHPState} from './home-page';
 import {initCommentsState} from './AbMe';
 import {saveMessage} from './saveMessage';
 import * as actionTypes from '../actions/actions';
-import {Generator} from './system/types';
+import {Generator} from '../../system/types';
 
 export function* watchHP (): Generator {
     yield takeEvery(actionTypes.FETCH_HOMEPAGE_STATE, initHPState);

@@ -13,7 +13,7 @@ import classes from './HomePage.module.css';
 import HomePageBlock from "../../components/HomePageBlock/HomePageBlock";
 import Auxx from "../../hoc/Auxx/Auxx";
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
-import {Work} from "../../store/sagas/system/types";
+import {Work} from "../../system/types";
 import {fetchHPActionCreator} from '../../store/actions/actionCreators';
 
 /**
