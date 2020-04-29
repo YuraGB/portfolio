@@ -6,7 +6,7 @@
  */
 
 import * as actionTypes from  '../actions/actions';
-import {Action, CommentType} from '../sagas/system/types';
+import {IAction, CommentType} from '../sagas/system/types';
 
 const initHPState:CommentType | [] = [];
 
@@ -16,7 +16,7 @@ const initHPState:CommentType | [] = [];
  * @param state
  * @param action
  */
-export const abMePageReducer = (state= initHPState, action:Action):CommentType | [] | {}=> {
+export const abMePageReducer = (state= initHPState, action:IAction):CommentType | [] | {}=> {
     switch (action.type) {
         case actionTypes.SET_COMMENTS : {
             return  action.payload

@@ -11,7 +11,7 @@ import Comment from "./CommentComponent/CommentComponent";
 import Spinner from "../Spinner/Spinner";
 import NavigationLink from "../Navigation/NavigationLink/NavigationLink";
 import Button from "../UI/Button/Button";
-import {CommentsComponentInterface} from '../../store/sagas/system/types';
+import {ICommentsComponentInterface} from '../../store/sagas/system/types';
 
 /**
  * CommentsComponent
@@ -20,7 +20,7 @@ import {CommentsComponentInterface} from '../../store/sagas/system/types';
  * @return {*}
  * @constructor
  */
-const CommentsComponent:React.FC<CommentsComponentInterface> = (
+const CommentsComponent:React.FC<ICommentsComponentInterface> = (
     {
         comments,
         commentsSize= 3

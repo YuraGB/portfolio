@@ -6,7 +6,7 @@
  */
 
 import * as actionTypes from  '../actions/actions';
-import {Action} from '../sagas/system/types';
+import {IAction} from '../sagas/system/types';
 
 const initHPState:boolean = false;
 
@@ -16,7 +16,7 @@ const initHPState:boolean = false;
  * @param state
  * @param action
  */
-export const spinnerReducer = (state= initHPState, action:Action):boolean => {
+export const spinnerReducer = (state= initHPState, action:IAction):boolean => {
     switch (action.type) {
         case actionTypes.SPINNER_SHOW : {
             return action.payload;

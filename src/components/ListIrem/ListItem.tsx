@@ -9,7 +9,7 @@ import React from 'react';
 
 import Button from "../UI/Button/Button";
 import classes from './ListItem.module.css';
-import {LinkItemInterface} from '../../store/sagas/system/types';
+import {ILinkItemInterface} from '../../store/sagas/system/types';
 
 /**
  * ProfessionComponent
@@ -17,7 +17,7 @@ import {LinkItemInterface} from '../../store/sagas/system/types';
  * @param props
  * @return {*}\
  */
-const ListItem:React.FC<LinkItemInterface> = ({name, link}) => {
+const ListItem:React.FC<ILinkItemInterface> = ({name, link}) => {
     return (
         <li className={classes.listItem}>
             {name}

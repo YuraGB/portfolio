@@ -7,7 +7,7 @@
 import React from 'react';
 
 import classes from './Backdrop.module.css';
-import {BackdropInterface} from '../../../store/sagas/system/types';
+import {IBackdropInterface} from '../../../store/sagas/system/types';
 
 /**
  * Backdrop
@@ -15,7 +15,7 @@ import {BackdropInterface} from '../../../store/sagas/system/types';
  * @param props
  * @return {*} component
  */
-const Backdrop:React.FC<BackdropInterface> = ({clicked, show}) => {
+const Backdrop:React.FC<IBackdropInterface> = ({clicked, show}) => {
     return (
         show ?
             <div

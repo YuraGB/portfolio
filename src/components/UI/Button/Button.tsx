@@ -8,7 +8,7 @@
 import React from 'react';
 
 import classes from './Buttom.module.css';
-import {UIButtonInterface} from '../../../store/sagas/system/types';
+import {IUIButtonInterface} from '../../../store/sagas/system/types';
 
 /**
  * Button
@@ -16,10 +16,10 @@ import {UIButtonInterface} from '../../../store/sagas/system/types';
  * @param {*} props
  * @return {*} component
  */
-const Button:React.FC<UIButtonInterface> = (
+const Button:React.FC<IUIButtonInterface> = (
     {
         disabled,
-        btnType,
+        btnType = '',
         clicked,
         children
     }) => {

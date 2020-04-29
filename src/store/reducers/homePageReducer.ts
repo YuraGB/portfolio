@@ -6,10 +6,10 @@
  */
 
 import * as actionTypes from  '../actions/actions';
-import {Action, HomePageState} from '../sagas/system/types';
+import {IAction, IHomePageState} from '../sagas/system/types';
 import {mergeDeep} from '../../utills/deepMerge';
 
-const initHPState:HomePageState | {} = {};
+const initHPState:IHomePageState | {} = {};
 
 /**
  * homePageReducer
@@ -17,7 +17,7 @@ const initHPState:HomePageState | {} = {};
  * @param state
  * @param action
  */
-export const homePageReducer = (state= initHPState, action:Action):HomePageState | any => {
+export const homePageReducer = (state= initHPState, action:IAction):IHomePageState | any => {
     switch (action.type) {
         case actionTypes.SET_HOMEPAGE_STATE : {
             return mergeDeep({}, state, action.payload)

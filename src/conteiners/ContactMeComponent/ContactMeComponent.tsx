@@ -5,7 +5,7 @@
  * @copyright 2020
  */
 
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {saveCommentsActionCreator} from '../../store/actions/actionCreators';

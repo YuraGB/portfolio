@@ -9,7 +9,7 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 
 import classes from "./NavigationLink.module.css";
-import {NaveLinkInterface} from "../../../store/sagas/system/types";
+import {INaveLinkInterface} from "../../../store/sagas/system/types";
 
 /**
  * NavigationLink
@@ -17,7 +17,7 @@ import {NaveLinkInterface} from "../../../store/sagas/system/types";
  * @param {*} props
  * @returns {*} component
  */
-const NavigationLink:React.FC<NaveLinkInterface> = ({link, className, children}) => {
+const NavigationLink:React.FC<INaveLinkInterface> = ({link, className, children}) => {
     return (
         <NavLink
             to={link}

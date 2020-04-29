@@ -14,7 +14,7 @@ import {fireBaseCalls} from "../../axios";
 import Input from "../UI/Input/Input";
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 import Spinner from "../Spinner/Spinner";
-import {FormInterface} from "../../store/sagas/system/types"
+import {IFormInterface} from "../../store/sagas/system/types"
 
 /**
  * FormContactMeComponent
@@ -26,7 +26,7 @@ import {FormInterface} from "../../store/sagas/system/types"
  * @param onSubmitHandler
  * @constructor
  */
-export const FormContactMeComponent:React.FC<FormInterface> = (
+export const FormContactMeComponent:React.FC<IFormInterface> = (
     {
         formFields,
         onChangeHandler,
@@ -35,7 +35,7 @@ export const FormContactMeComponent:React.FC<FormInterface> = (
         onSubmitHandler
     }) => {
     let fields;
-    console.log(spinner);
+
     if(formFields) {
         fields = utils.formFieldsToArray(formFields).map(field => (
             <Input

@@ -7,7 +7,7 @@
 import React from 'react';
 
 import classes from './CommentComponent.module.css'
-import {CommentInterface} from '../../../store/sagas/system/types';
+import {ICommentInterface} from '../../../store/sagas/system/types';
 
 /**
  * CommentComponent
@@ -17,7 +17,7 @@ import {CommentInterface} from '../../../store/sagas/system/types';
  * @param authorsName
  * @return {*} Component
  */
-const CommentComponent:React.FC<CommentInterface> = (
+const CommentComponent:React.FC<ICommentInterface> = (
     {
         date,
         authorsComment,

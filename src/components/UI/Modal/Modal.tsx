@@ -12,7 +12,7 @@ import classes from './Modal.module.css';
 import Auxx from "../../../hoc/Auxx/Auxx";
 import Backdrop from "../Backdrop/Backdrop";
 import './modal-animation.css';
-import {ModalInterface} from '../../../store/sagas/system/types';
+import {IModalInterface} from '../../../store/sagas/system/types';
 
 /**
  * Modal
@@ -20,12 +20,11 @@ import {ModalInterface} from '../../../store/sagas/system/types';
  * @param props
  * @return {*} component
  */
-const Modal:React.FC<ModalInterface> = React.memo(({children, show, modalClosed}) => {
-    //const {showModal, onOpenModalHandler} = useContext(Index);
+const Modal:React.FC<IModalInterface> = React.memo(({children, show, modalClosed}) => {
     return (
         <Auxx>
             <CSSTransition
-                in={false}
+                in={show}
                 classNames='show-popup'
                 timeout={500}
             ><section

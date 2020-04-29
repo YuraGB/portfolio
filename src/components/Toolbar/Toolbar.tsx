@@ -11,7 +11,7 @@ import {CSSTransition} from 'react-transition-group'
 
 import './Toolbar.css';
 import NavigationLink from "../Navigation/NavigationLink/NavigationLink";
-import {ToolbarInterface} from '../../store/sagas/system/types'
+import {IToolbarInterface} from '../../store/sagas/system/types'
 
 /**
  * Toolbar
@@ -19,7 +19,7 @@ import {ToolbarInterface} from '../../store/sagas/system/types'
  * @param {*} props
  * @return {*} component
  */
-const Toolbar:React.FC<ToolbarInterface> = ({clicked}) => {
+const Toolbar:React.FC<IToolbarInterface> = ({clicked}) => {
     //const {directToAboutMe} = useContext(Index);
 
     return (

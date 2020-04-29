@@ -5,28 +5,28 @@
  * @copyright 2020
  */
 
-export interface HomePageState {
+export interface IHomePageState {
         hobbies: {},
         work: {Work} | {},
-        weaknessesStrengths: WeaknessesStrengths | {}
+        weaknessesStrengths: IWeaknessesStrengths | {}
 }
 
-export interface WeaknessesStrengths {
+export interface IWeaknessesStrengths {
     angry: string,
     'like games': string
 }
 
-export type CommentInterface = {
+export type ICommentInterface = {
     authorsComment: string,
     authorsEmail?: string,
     authorsName: string,
     date: number
 }
 
-export interface CommentsComponentInterface {
+export interface ICommentsComponentInterface {
     comments: {
         id: number
-        commentData: CommentInterface,
+        commentData: ICommentInterface,
         length: number
     }[],
     commentsSize?: number
@@ -34,33 +34,32 @@ export interface CommentsComponentInterface {
 
 export type CommentType = {
         id: string
-        commentData: CommentInterface
+        commentData: ICommentInterface
     }[]
 
-
-export interface Action {
+export interface IAction {
     type: string,
     payload: object | any
 }
 
-export interface HomePageBlockInterface {
+export interface IHomePageBlockInterface {
     category: {[key:string]: any},
     title:string,
     type?:string | undefined,
     linkDirection:string
 }
 
-export interface LinkItemInterface {
+export interface ILinkItemInterface {
     name:string,
-    link:string
+    link?:string
 }
 
-export interface InfoBlockComponentInterface {
+export interface IInfoBlockComponentInterface {
     title: string,
     children: ChildrenType
 }
 
-export interface NaveLinkInterface {
+export interface INaveLinkInterface {
     link: string,
     className?: string,
     children: ChildrenType
@@ -68,7 +67,7 @@ export interface NaveLinkInterface {
 
 export type ChildrenType = JSX.Element[] | JSX.Element | string | null;
 
-export interface ToolbarInterface {
+export interface IToolbarInterface {
     clicked: ()=> void,
 }
 
@@ -81,7 +80,7 @@ export type elementConfig = [
     }
 ];
 
-export interface UIInputInterface {
+export interface IUIInputInterface {
     invalid: boolean,
     touched: boolean,
     shouldValidate: boolean,
@@ -94,9 +93,9 @@ export interface UIInputInterface {
     isValidated?:boolean
 }
 
-export interface UIButtonInterface {
+export interface IUIButtonInterface {
     disabled?: boolean,
-    btnType: string,
+    btnType?: string,
     clicked?: () => void,
     children?: ChildrenType
 }
@@ -109,18 +108,18 @@ export interface Generator<T = unknown, TReturn = any, TNext = unknown>
     [Symbol.iterator](): Generator<T, TReturn, TNext>;
 }
 
-export interface ReturnHPInterface {
+export interface IReturnHPInterface {
     location: {
         pathname:string
     }
 }
 
-export interface BackdropInterface {
+export interface IBackdropInterface {
     show: boolean;
     clicked: () => void
 }
 
-export interface ModalInterface {
+export interface IModalInterface {
     show: boolean,
     children: ChildrenType,
     modalClosed: ()=> void
@@ -145,8 +144,8 @@ export type Message = {
     status: string
 }
 
-export interface FormInterface {
-   formFields: UIInputInterface;
+export interface IFormInterface {
+   formFields: IUIInputInterface;
     onChangeHandler: (e:any, id:number) => void;
     isValidated?: boolean | any;
     spinner: boolean;

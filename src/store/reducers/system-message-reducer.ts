@@ -6,7 +6,7 @@
  */
 
 import * as actionTypes from  '../actions/actions';
-import {Action, Message} from '../sagas/system/types';
+import {IAction, Message} from '../sagas/system/types';
 
 const initHPState:Message | {} = {};
 
@@ -16,7 +16,7 @@ const initHPState:Message | {} = {};
  * @param state
  * @param action
  */
-export const systemMessageReducer = (state= initHPState, action:Action):Message | {} => {
+export const systemMessageReducer = (state= initHPState, action:IAction):Message | {} => {
     switch (action.type) {
         case actionTypes.SYSTEM_MESSAGE : {
             return action.payload;

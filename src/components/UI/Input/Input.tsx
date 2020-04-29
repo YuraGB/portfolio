@@ -7,14 +7,14 @@
 import React from 'react';
 
 import classes from './Input.module.css';
-import {UIInputInterface} from '../../../store/sagas/system/types';
+import {IUIInputInterface} from '../../../store/sagas/system/types';
 
 /**
  * Input UI component
  * @param {*} props
  * @return {*} component
  */
-const Input:React.FC<UIInputInterface> = (
+const Input:React.FC<IUIInputInterface> = (
     {
         invalid,
         touched,
