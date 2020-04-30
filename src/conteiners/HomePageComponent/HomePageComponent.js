@@ -39,6 +39,7 @@ const HomePageComponent = () => {
                     });
                 }
             );
+
             getBooks().then(console.log)
         }
 

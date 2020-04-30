@@ -12,6 +12,7 @@ import {CSSTransition} from 'react-transition-group'
 import './Toolbar.css';
 import NavigationLink from "../Navigation/NavigationLink/NavigationLink";
 import Context from "../../Context/context";
+import profile from '../../assets/images/icons/profile.svg';
 
 /**
  * Toolbar
@@ -31,7 +32,7 @@ const Toolbar = (props) => {
         >
             <section className='Toolbar' onClick={directToAboutMe}>
                     <NavigationLink className='nav_link' link='/aboutMe'>
-                        Me
+                        <img src={profile} alt=""/>
                     </NavigationLink>
             </section>
         </CSSTransition>
