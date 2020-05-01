@@ -8,6 +8,8 @@ const globalVariable = {
     primary: 'blue',
     secondary: 'grey',
     contentAreaMaxWidth: '1440px',
+    tabletWidth: '1025px',
+    mobileWidth: '768px',
     toolbarBgColorAnimated: ' #0b0b0b'
   };
 

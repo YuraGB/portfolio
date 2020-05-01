@@ -18,7 +18,7 @@ import {IInfoBlockComponentInterface} from '../../system/types'
  */
 const InfoBlockComponent:React.FC<IInfoBlockComponentInterface> = ({title, children}) => {
     return (
-        <section className={classes.Block} style={{background: 'purple'}}>
+        <section className={classes.Block}>
             <h3>{title}</h3>
             {children}
         </section>

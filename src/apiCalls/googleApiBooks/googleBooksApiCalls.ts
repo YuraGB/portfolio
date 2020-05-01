@@ -5,7 +5,7 @@
  * @copyright 2020
  */
 
-import config from './config';
+import config from './config/index.json';
 
 /**
  * getBooks is api call to the google api

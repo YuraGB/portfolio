@@ -12,7 +12,7 @@
  * @param {*}obj
  * @return [{*}] Array of the inputs data
  */
-export const formFieldsToArray = (obj) => {
+export const formFieldsToArray = <T extends object>(obj: T) => {
     return Object.keys(obj).map(field => {
         return {
             id: field,
