@@ -5,7 +5,7 @@
  * @copyright 2020
  */
 
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import PropTypes from 'prop-types';
 import {CSSTransition} from "react-transition-group";
 
@@ -13,6 +13,7 @@ import InfoBlockComponent from "../infoBlockComponent/infoBlockComponent";
 import ListItem from "../ListIrem/ListItem";
 import './HomePageBlock-animation.css';
 import Context from "../../Context/context";
+import DescriptionBlock from "../DescriptionBlock/DescriptionBlock";
 
 /**
  * HomePageBlock
@@ -23,13 +24,18 @@ import Context from "../../Context/context";
  */
 const HomePageBlock = ({category, title, type, linkDirection}) => {
     const {state} = useContext(Context);
+    const [categoryType, setActiveCategoryName] = useState('');
+    const onHoverHendler = (categoryName) => setActiveCategoryName(categoryName);
     const list = Object.keys(category)
         .map(e =>
             <ListItem
                 key={e}
+
                 link={linkDirection}
                 name={category[e][type] ? category[e][type] : e }
-            />);
+                onHover={onHoverHendler}
+            />
+            );
 
     return (
         <CSSTransition
@@ -44,6 +50,7 @@ const HomePageBlock = ({category, title, type, linkDirection}) => {
                         list
                     }
                 </ul>
+                <DescriptionBlock type={categoryType}/>
             </InfoBlockComponent>
         </CSSTransition>
     )

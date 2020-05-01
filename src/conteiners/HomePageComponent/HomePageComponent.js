@@ -14,6 +14,7 @@ import Context from "../../Context/context";
 import Auxx from "../../hoc/Auxx/Auxx";
 import {getBooks} from '../../apiCalls/googleApiBooks/googleBooksApiCalls'
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
+import bookNormolize from './utils/booksNormolize';
 
 /**
  * HomePageComponent
@@ -21,7 +22,11 @@ import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
  * @return {*} component
  */
 const HomePageComponent = () => {
-    const {state, stateHandler} = useContext(Context);
+    const {
+        state,
+        stateHandler,
+        stateBooksHandler
+    } = useContext(Context);
 
     useEffect( () => {
         if(!state.hp) {
@@ -40,19 +45,30 @@ const HomePageComponent = () => {
                 }
             );
 
-            getBooks().then(console.log)
+            getBooks()
+                .then(books => stateBooksHandler(bookNormolize(books)));
         }
-
-    }, [state.hp, stateHandler]);
+    }, [state.hp, stateHandler, stateBooksHandler]);
 
     return (
         <article className={['content', classes.HomePage].join(' ')}>
             {state.hp &&
-            <Auxx>
-                <HomePageBlock linkDirection='link-right' title="Work Experience" category={state.hp.work} type='profession'/>
-                <HomePageBlock linkDirection='link-left' title="hobbies" category={state.hp.hobbies} />
-                <HomePageBlock linkDirection='link-right' title="weakness && strengths" category={state.hp.weaknessesStrengths} />
-            </Auxx>
+                <Auxx>
+                    <HomePageBlock
+                        linkDirection='link-right'
+                        title="Work Experience"
+                        category={state.hp.work}
+                        type='profession'
+                    />
+                    <HomePageBlock linkDirection='link-left'
+                                   title="hobbies"
+                                   category={state.hp.hobbies}
+                    />
+                    <HomePageBlock linkDirection='link-right'
+                                   title="weakness && strengths"
+                                   category={state.hp.weaknessesStrengths}
+                    />
+                </Auxx>
             }
         </article>
     )

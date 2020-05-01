@@ -19,9 +19,14 @@ import classes from './ListItem.module.css';
  */
 const ListItem = (props) => {
     return (
-        <li className={classes.listItem}>
+        <li className={classes.listItem}
+            onMouseEnter={() => props.onHover(props.name)}
+            onMouseLeave={() => props.onHover('')}
+        >
             {props.name}
-            <Button btnType={props.link} />
+            <Button
+                btnType={props.link}
+            />
         </li>
     )
 };

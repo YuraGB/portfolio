@@ -25,6 +25,7 @@ const Layout = (props) => {
     const [showModal, setModalStatus] = useState(false);
     const [message, applicationMessageHendler] = useState(null);
     const [state, stateHandler] = useState({hp:null, abMe:null});
+    const [stateBooks, stateBooksHandler] = useState(null);
 
     const onOpenModalHandler = () => setModalStatus(prevState => !prevState);
     const directToAboutMe = () => directToAbouteMeHendler(true);
@@ -41,6 +42,8 @@ const Layout = (props) => {
             <Context.Provider
                 value={
                     {
+                        stateBooks,
+                        stateBooksHandler,
                         is_directToAboutMe,
                         directToAboutMe,
                         showModal,
