@@ -14,7 +14,7 @@ import HomePageBlock from "../../components/HomePageBlock/HomePageBlock";
 import Auxx from "../../hoc/Auxx/Auxx";
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 import {Work} from "../../system/types";
-import {fetchHPActionCreator} from '../../store/actions/actionCreators';
+import {fetchHPActionCreator, fetchBooksActionCreator} from '../../store/actions/actionCreators';
 
 /**
  * HomePageComponent
@@ -26,15 +26,15 @@ const HomePageComponent:React.FC = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (!JSON.stringify(hpState.work)) {
+        if (!hpState.work) {
             dispatch(fetchHPActionCreator());
-
+            dispatch(fetchBooksActionCreator());
         }
     }, [dispatch, hpState.work]);
 
     return (
         <article className={['content', classes.HomePage].join(' ')}>
-            {JSON.stringify(hpState.work) &&
+            {hpState.work &&
                 <Auxx>
                     <HomePageBlock linkDirection='link-right' title="Work Experience" category={hpState.work} type='profession'/>
                     <HomePageBlock linkDirection='link-left' title="hobbies" category={hpState.hobbies}/>

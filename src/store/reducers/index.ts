@@ -13,3 +13,7 @@ export  {
 export {
     spinnerReducer
 } from './spinner-reducer';
+
+export {
+    booksReducer
+} from './setBooksReducer';

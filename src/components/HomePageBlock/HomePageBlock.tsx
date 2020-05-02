@@ -5,13 +5,14 @@
  * @copyright 2020
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {CSSTransition} from "react-transition-group";
 
 import InfoBlockComponent from "../infoBlockComponent/infoBlockComponent";
-import ListItem from "../ListIrem/ListItem";
+import ListItem from "./ListIrem/ListItem";
 import './HomePageBlock-animation.css';
 import {IHomePageBlockInterface, ChildrenType} from '../../system/types';
+import ListCategory from "./listCategory/ListCategory";
 
 /**
  * HomePageBlock
@@ -29,12 +30,15 @@ const HomePageBlock: React.FC<IHomePageBlockInterface> = (
     }
         ) => {
     let list:ChildrenType;
+    const [activeCategory, setActiveCategory] = useState('');
+    const onHover = (categoryActive) => setActiveCategory(categoryActive);
 
     if (category) {
         list = Object.keys(category)
             .map(e =>
                 <ListItem
                     key={e}
+                    onHover={onHover}
                     link={linkDirection}
                     name={type ? category[e][type] : e}
                 />);
@@ -55,6 +59,9 @@ const HomePageBlock: React.FC<IHomePageBlockInterface> = (
                         list
                     }
                 </ul>
+                <section>
+                    <ListCategory type={activeCategory}/>
+                </section>
             </InfoBlockComponent>
         </CSSTransition>
     )

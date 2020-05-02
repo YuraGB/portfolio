@@ -39,7 +39,7 @@ export type CommentType = {
 
 export interface IAction {
     type: string,
-    payload: object | any
+    payload?: object | any
 }
 
 export interface IHomePageBlockInterface {
@@ -51,7 +51,8 @@ export interface IHomePageBlockInterface {
 
 export interface ILinkItemInterface {
     name:string,
-    link?:string
+    link?:string,
+    onHover?: (name:string) => void
 }
 
 export interface IInfoBlockComponentInterface {
