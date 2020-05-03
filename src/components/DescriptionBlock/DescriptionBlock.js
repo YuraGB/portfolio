@@ -35,9 +35,12 @@ const DescriptionBlock = ({type}) => {
 
     return (
         <section>
+            {topList &&
             <ul>
                 {topList}
             </ul>
+            }
+
         </section>
     )
 };

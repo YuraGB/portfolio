@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import {CSSTransition} from "react-transition-group";
 
 import InfoBlockComponent from "../infoBlockComponent/infoBlockComponent";
-import ListItem from "../ListIrem/ListItem";
+import ListItem from "./ListIrem/ListItem";
 import './HomePageBlock-animation.css';
 import Context from "../../Context/context";
 import DescriptionBlock from "../DescriptionBlock/DescriptionBlock";
