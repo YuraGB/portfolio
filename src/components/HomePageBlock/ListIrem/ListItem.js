@@ -21,7 +21,6 @@ const ListItem = (props) => {
     return (
         <li className={classes.listItem}
             onMouseEnter={() => props.onHover(props.name)}
-            onMouseLeave={() => props.onHover('')}
         >
             {props.name}
             <Button

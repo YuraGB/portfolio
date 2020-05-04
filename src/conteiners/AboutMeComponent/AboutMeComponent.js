@@ -41,7 +41,9 @@ const AboutMeComponent = () => {
     },[state.abMe, stateHandler]);
 
     return (
-            <article className='content AboutMePage'>
+            <article
+                className='content AboutMePage'
+            >
                 <h1 className='page_title'>About Me</h1>
                 <CommentsComponent comments={state.abMe}/>
             </article>

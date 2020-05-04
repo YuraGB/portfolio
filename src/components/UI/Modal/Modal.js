@@ -14,7 +14,6 @@ import Backdrop from "../Backdrop/Backdrop";
 import Context from "../../../Context/context";
 import './modal-animation.css'
 
-
 /**
  * Modal
  *

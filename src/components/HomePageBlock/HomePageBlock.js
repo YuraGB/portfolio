@@ -30,7 +30,6 @@ const HomePageBlock = ({category, title, type, linkDirection}) => {
         .map(e =>
             <ListItem
                 key={e}
-
                 link={linkDirection}
                 name={category[e][type] ? category[e][type] : e }
                 onHover={onHoverHendler}
@@ -44,7 +43,9 @@ const HomePageBlock = ({category, title, type, linkDirection}) => {
             classNames='home-block'
             timeout={300}
         >
-            <InfoBlockComponent title={title}>
+            <InfoBlockComponent
+                onMouseLeave={() => onHoverHendler('')}
+                title={title}>
                 <ul>
                     {
                         list

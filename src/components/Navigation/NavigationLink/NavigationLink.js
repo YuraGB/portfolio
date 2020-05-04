@@ -24,6 +24,7 @@ const NavigationLink = (props) => {
             exact
             className={[classes.NavigationLink, props.className ? props.className : ''].join(' ')}
             activeClassName={classes.active}
+            {...props}
             >{props.children}</NavLink>
     )
 };

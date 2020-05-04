@@ -20,8 +20,8 @@ import profile from '../../assets/images/icons/profile.svg';
  * @param {*} props
  * @return {*} component
  */
-const Toolbar = (props) => {
-    const {directToAboutMe} = useContext(Context);
+const Toolbar = () => {
+    const {directToAboutMe, promptHendler} = useContext(Context);
 
     return (
         <CSSTransition
@@ -30,7 +30,12 @@ const Toolbar = (props) => {
             appear={true}
             timeout={1200}
         >
-            <section className='Toolbar' onClick={directToAboutMe}>
+            <section
+                className='Toolbar'
+                onClick={directToAboutMe}
+                onMouseMove={promptHendler({show: true, text: 'visit My profile page'})}
+                onMouseLeave={promptHendler({show: false, text: ''})}
+            >
                     <NavigationLink className='nav_link' link='/aboutMe'>
                         <img src={profile} alt=""/>
                     </NavigationLink>
