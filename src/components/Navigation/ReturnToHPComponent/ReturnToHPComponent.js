@@ -22,6 +22,8 @@ const ReturnToHPComponent = ({ location }) => {
     const {promptHendler} = useContext(Context);
 
     let path = location.pathname;
+
+
     let component = (
         <NavigationLink
             onMouseMove={promptHendler({show: true, text: 'Home Page'})}
@@ -32,7 +34,9 @@ const ReturnToHPComponent = ({ location }) => {
     );
 
     if (path === '/') {
-        component = <span className={classes.HomePageLink}>WeAreHP</span>
+        component = <span
+            onMouseMove={promptHendler({show: false, text: ''})}
+            className={classes.HomePageLink}>WeAreHP</span>
     }
 
     return component;
