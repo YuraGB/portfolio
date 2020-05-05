@@ -1,7 +1,6 @@
 .listItem {
     display: flex;
     justify-content: space-between;
-    max-width: 50%;
 
     button {
         visibility: hidden;

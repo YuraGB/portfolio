@@ -5,57 +5,37 @@
  * @copyright 2020
  */
 
-import React, {useState} from 'react';
+import React from 'react';
 
 import Auxx from "../Auxx/Auxx";
 import classes from './Layout.module.css';
 import Toolbar from "../../components/Toolbar/Toolbar";
 import ReturnToHPComponent from "../../components/Navigation/ReturnToHPComponent/ReturnToHPComponent";
 import Context from "../../Context/context";
+import FooterComponent from "../../components/Footer/FooterComponent";
 import ApplicationMessagesComponent from "../../components/ApplicationMessagesComponent/ApplicationMessagesComponent";
+import useLayoutCustomHook from "./LayoutCustomHook";
+import PromptComponent from "../../components/PromptComponent/PromptComponent";
 
 /**
  * Layout component
- *
- * @return component
+ * @param props
+ * @return {*} Component
  */
 const Layout = (props) => {
-    const [is_directToAboutMe, directToAbouteMeHendler] = useState(false);
-    const [showModal, setModalStatus] = useState(false);
-    const [message, applicationMessageHendler] = useState(null);
-    const [state, stateHandler] = useState({hp:null, abMe:null});
-
-    const onOpenModalHandler = () => setModalStatus(prevState => !prevState);
-    const directToAboutMe = () => directToAbouteMeHendler(true);
-    const hideApplicationMessage = (response) => {
-        applicationMessageHendler(response);
-
-        setTimeout(() => {
-           applicationMessageHendler(null)
-        }, 5000);
-    };
+    const value = useLayoutCustomHook();
 
     return (
         <Auxx>
-            <Context.Provider
-                value={
-                    {
-                        is_directToAboutMe,
-                        directToAboutMe,
-                        showModal,
-                        onOpenModalHandler,
-                        message,
-                        hideApplicationMessage,
-                        state,
-                        stateHandler
-                    }
-                }>
+            <Context.Provider value={value}>
+                <PromptComponent/>
                 <ReturnToHPComponent />
-                <ApplicationMessagesComponent message={message}/>
-                <Toolbar isDirected={is_directToAboutMe} clicked={directToAboutMe}/>
+                <ApplicationMessagesComponent message={value.message}/>
+                <Toolbar isDirected={value.is_directToAboutMe} clicked={value.directToAboutMe}/>
                 <main className={classes.Content}>
                     {props.children}
                 </main>
+                <FooterComponent/>
             </Context.Provider>
         </Auxx>
     )

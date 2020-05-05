@@ -8,8 +8,9 @@
 import React, {useContext, useState} from 'react';
 import FormContactMeComponent from "../../components/FormContactMe/FormContactMeComponent";
 import * as utils from "./utils";
-import axios from "../../axios";
+import {fireBaseCalls} from "../../axios";
 import Context from "../../Context/context";
+import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 
 /**
  * ContactMeComponent page
@@ -113,7 +114,7 @@ const ContactMeComponent = (props) => {
     const onSubmitHandler = () => {
         if (isValidated) {
             showSpinner(true);
-            axios.post('/comments.json', {
+            fireBaseCalls.post('/comments.json', {
                 authorsName: formFields.name.value,
                 authorsEmail: formFields.email.value,
                 authorsComment: formFields.textarea.value,
@@ -147,4 +148,4 @@ const ContactMeComponent = (props) => {
     )
 };
 
-export default ContactMeComponent;
+export default withErrorHandler(ContactMeComponent, fireBaseCalls);

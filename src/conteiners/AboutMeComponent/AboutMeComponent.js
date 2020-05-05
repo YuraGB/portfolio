@@ -8,9 +8,10 @@
 import React, {useContext, useEffect} from 'react';
 
 import './AboutMe.css';
-import axios from "../../axios";
+import {fireBaseCalls} from "../../axios";
 import CommentsComponent from "../../components/CommentsComponent/CommentsComponent";
 import Context from "../../Context/context";
+import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 
 
 /**
@@ -23,7 +24,7 @@ const AboutMeComponent = () => {
 
     useEffect(() => {
         if(!state.abMe) {
-            axios.get('/comments.json')
+            fireBaseCalls.get('/comments.json')
                 .then(resp => {
                     stateHandler((prevState) => {
                         return {
@@ -40,11 +41,13 @@ const AboutMeComponent = () => {
     },[state.abMe, stateHandler]);
 
     return (
-            <article className='content AboutMePage'>
+            <article
+                className='content AboutMePage'
+            >
                 <h1 className='page_title'>About Me</h1>
                 <CommentsComponent comments={state.abMe}/>
             </article>
     )
 };
 
-export default AboutMeComponent;
+export default withErrorHandler(AboutMeComponent, fireBaseCalls);

@@ -1,0 +1,7 @@
+{
+  "google_kreds" : {
+    "API_KEY" : "AIzaSyCN7CZRo2hMRpVyfcomDWqfJ9QcnS6T3RU",
+    "BOOKS_USER_ID" : "103761050095968997865",
+    "GOOGLE_BOOKS_URL" : "https://www.googleapis.com/books/v1/users"
+  }
+}

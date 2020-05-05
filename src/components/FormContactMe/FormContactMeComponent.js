@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import classes from "./FormContactMeComponent.module.css";
 import Button from "../UI/Button/Button";
 import * as utils from "../../conteiners/ContactMeComponent/utils";
-import axios from "../../axios";
+import {fireBaseCalls} from "../../axios";
 import Input from "../UI/Input/Input";
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 import Spinner from "../Spinner/Spinner";
@@ -60,4 +60,4 @@ FormContactMeComponent.propTypes = {
     onChangeHandler: PropTypes.func
 };
 
-export default withErrorHandler(FormContactMeComponent, axios);
+export default withErrorHandler(FormContactMeComponent, fireBaseCalls);

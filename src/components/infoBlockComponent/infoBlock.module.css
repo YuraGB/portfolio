@@ -1,11 +1,25 @@
 .Block {
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
 
     h3 {
-
+        width: 100%;
     }
 
     ul {
         padding: 0;
+        width: 50%;
+        order: 1;
+        list-style: none;
+    }
+
+    section {
+        width: 50%;
+
+        ul {
+            width: 100%;
+        }
     }
 }

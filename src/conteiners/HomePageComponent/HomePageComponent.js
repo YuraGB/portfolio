@@ -7,11 +7,14 @@
 
 import React, {useContext, useEffect} from 'react';
 
-import axios from '../../axios';
+import {fireBaseCalls} from '../../axios';
 import classes from './HomePage.module.css';
 import HomePageBlock from "../../components/HomePageBlock/HomePageBlock";
 import Context from "../../Context/context";
 import Auxx from "../../hoc/Auxx/Auxx";
+import {getBooks} from '../../apiCalls/googleApiBooks/googleBooksApiCalls'
+import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
+import bookNormolize from './utils/booksNormolize';
 
 /**
  * HomePageComponent
@@ -19,37 +22,56 @@ import Auxx from "../../hoc/Auxx/Auxx";
  * @return {*} component
  */
 const HomePageComponent = () => {
-    const {state, stateHandler} = useContext(Context);
+    const {
+        state,
+        stateHandler,
+        stateBooksHandler
+    } = useContext(Context);
 
     useEffect( () => {
         if(!state.hp) {
-            axios.get('/home page state.json')
+            fireBaseCalls.get('/home page state.json')
                 .then(resp => {
                     stateHandler((prevState) => {
                         return {
                             ...prevState,
                             hp: {
                                 work: resp.data.work,
-                                hobbies: resp.data.hobbies
+                                hobbies: resp.data.hobbies,
+                                weaknessesStrengths: resp.data.weaknessesStrengths
                             }
                         }
                     });
                 }
             );
-        }
 
-    }, [state.hp, stateHandler]);
+            getBooks()
+                .then(books => stateBooksHandler(bookNormolize(books)));
+        }
+    }, [state.hp, stateHandler, stateBooksHandler]);
 
     return (
         <article className={['content', classes.HomePage].join(' ')}>
             {state.hp &&
-            <Auxx>
-                <HomePageBlock title="Work Experience" category={state.hp.work} type='profession'/>
-                <HomePageBlock title="hobbies" category={state.hp.hobbies} />
-            </Auxx>
+                <Auxx>
+                    <HomePageBlock
+                        linkDirection='link-right'
+                        title="Work Experience"
+                        category={state.hp.work}
+                        type='profession'
+                    />
+                    <HomePageBlock linkDirection='link-left'
+                                   title="hobbies"
+                                   category={state.hp.hobbies}
+                    />
+                    <HomePageBlock linkDirection='link-right'
+                                   title="weakness && strengths"
+                                   category={state.hp.weaknessesStrengths}
+                    />
+                </Auxx>
             }
         </article>
     )
 };
 
-export default HomePageComponent;
+export default withErrorHandler(HomePageComponent, fireBaseCalls);

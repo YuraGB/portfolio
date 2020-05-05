@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from "../UI/Button/Button";
+import Button from "../../UI/Button/Button";
 import classes from './ListItem.module.css';
 
 /**
@@ -19,9 +19,13 @@ import classes from './ListItem.module.css';
  */
 const ListItem = (props) => {
     return (
-        <li className={classes.listItem}>
+        <li className={classes.listItem}
+            onMouseEnter={() => props.onHover(props.name)}
+        >
             {props.name}
-            <Button btnType='link-right' />
+            <Button
+                btnType={props.link}
+            />
         </li>
     )
 };

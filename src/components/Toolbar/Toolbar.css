@@ -95,4 +95,13 @@
             text-align: center;
         }
     }
+
+    img {
+        width: 50px;
+    }
+
+    &:hover {
+        transition: box-shadow 0.3s ease-in-out;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
 }

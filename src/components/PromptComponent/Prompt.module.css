@@ -1,0 +1,12 @@
+.Prompt {
+    font-size: 12px;
+    letter-spacing: 1px;
+    display: inline-block;
+    width: auto;
+    text-align: right;
+    padding: 5px;
+    background-color: rgba(0,0,0, .9);
+    color: #f7fcff;
+    white-space: nowrap;
+    z-index: 5;
+}

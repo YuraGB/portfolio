@@ -1,0 +1,17 @@
+.home-block {
+    &-appear {
+        opacity: 0;
+        transform: scale(1.02);
+
+        &-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        &-done {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
