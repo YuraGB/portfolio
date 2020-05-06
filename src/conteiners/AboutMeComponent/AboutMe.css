@@ -1,5 +1,8 @@
 .AboutMePage {
+    padding: 20px 0;
+
     .comments {
         width: 50%;
+        margin-left:  auto;
     }
 }

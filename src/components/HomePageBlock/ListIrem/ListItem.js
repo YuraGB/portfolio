@@ -21,6 +21,7 @@ const ListItem = (props) => {
     return (
         <li className={classes.listItem}
             onMouseEnter={() => props.onHover(props.name)}
+            onClick={props.clicked}
         >
             {props.name}
             <Button

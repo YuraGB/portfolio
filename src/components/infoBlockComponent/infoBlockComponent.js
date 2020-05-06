@@ -16,11 +16,16 @@ import classes from './infoBlock.module.css';
  * @param props
  * @return {*} Component
  */
-const InfoBlockComponent = (props) => {
+const InfoBlockComponent = ({title, children, active, onLeave}) => {
     return (
-        <section className={classes.Block} style={{background: 'purple'}}>
-            <h3>{props.title}</h3>
-            {props.children}
+        <section
+            onMouseLeave={onLeave}
+            className={[classes.Block, active ? classes.active : ''].join(' ')}
+        >
+            <div className={['description' ,classes.ContentWrapper, active ? classes.activeBlock: ''].join((' '))}>
+                <h3>{title}</h3>
+                {children}
+            </div>
         </section>
     )
 };

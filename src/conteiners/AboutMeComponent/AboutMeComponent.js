@@ -12,6 +12,8 @@ import {fireBaseCalls} from "../../axios";
 import CommentsComponent from "../../components/CommentsComponent/CommentsComponent";
 import Context from "../../Context/context";
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
+import ProfileImg from "../../components/ProfileImg/ProfileImg";
+import AuthobiographyComponent from "../../components/AuthobiographyComponent/AuthobiographyComponent";
 
 
 /**
@@ -41,12 +43,11 @@ const AboutMeComponent = () => {
     },[state.abMe, stateHandler]);
 
     return (
-            <article
-                className='content AboutMePage'
-            >
-                <h1 className='page_title'>About Me</h1>
-                <CommentsComponent comments={state.abMe}/>
-            </article>
+        <article className='content AboutMePage'>
+            <ProfileImg/>
+            <AuthobiographyComponent/>
+            <CommentsComponent comments={state.abMe}/>
+        </article>
     )
 };
 

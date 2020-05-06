@@ -25,7 +25,10 @@ import DescriptionBlock from "../DescriptionBlock/DescriptionBlock";
 const HomePageBlock = ({category, title, type, linkDirection}) => {
     const {state} = useContext(Context);
     const [categoryType, setActiveCategoryName] = useState('');
-    const onHoverHendler = (categoryName) => setActiveCategoryName(categoryName);
+    const [showDescription, setActiveBlock] = useState(true);
+    const onHoverHendler = (categoryName) => {
+        console.log(categoryName);
+        setActiveCategoryName(categoryName)};
     const list = Object.keys(category)
         .map(e =>
             <ListItem
@@ -33,6 +36,7 @@ const HomePageBlock = ({category, title, type, linkDirection}) => {
                 link={linkDirection}
                 name={category[e][type] ? category[e][type] : e }
                 onHover={onHoverHendler}
+                clicked={()=>{}}
             />
             );
 
@@ -43,16 +47,24 @@ const HomePageBlock = ({category, title, type, linkDirection}) => {
             classNames='home-block'
             timeout={300}
         >
+            <CSSTransition
+                in={!!categoryType}
+                timout={300}
+                classNames='active-block'
+            >
             <InfoBlockComponent
-                onMouseLeave={() => onHoverHendler('')}
+                onLeave={() => {onHoverHendler('')}}
                 title={title}>
-                <ul>
-                    {
-                        list
-                    }
-                </ul>
-                <DescriptionBlock type={categoryType}/>
+
+                    <ul className='main-list'>
+                        {
+                            list
+                        }
+                    </ul>
+                    <DescriptionBlock type={categoryType}/>
+
             </InfoBlockComponent>
+            </CSSTransition>
         </CSSTransition>
     )
 };

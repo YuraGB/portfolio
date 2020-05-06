@@ -5,9 +5,11 @@ import classes from './CommentComponent.module.css'
 const CommentComponent = (props) => {
     return (
         <div className={classes.Comment}>
-            <span>{props.date}</span>
             <q>{props.text}</q>
-            <span>{props.author}</span>
+            <div className={classes.Author}>
+                <span>{new Date(props.date).toLocaleDateString()}</span>
+                <span >{props.author}</span>
+            </div>
         </div>
     )
 };

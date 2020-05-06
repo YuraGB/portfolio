@@ -1,8 +1,12 @@
 .Block {
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
+    position: relative;
+
+    .ContentWrapper {
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
 
     h3 {
         width: 100%;
@@ -22,4 +26,16 @@
             width: 100%;
         }
     }
+}
+
+.active {
+    z-index: 1;
+}
+
+.activeBlock {
+    transition: all 1s;
+    transform: translate3d(-51%, 15px, 0);
+    height: 80vh;
+    position: fixed;
+    box-sizing: border-box;
 }
