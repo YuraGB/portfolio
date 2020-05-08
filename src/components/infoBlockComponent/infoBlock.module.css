@@ -14,17 +14,8 @@
 
     ul {
         padding: 0;
-        width: 50%;
         order: 1;
         list-style: none;
-    }
-
-    section {
-        width: 50%;
-
-        ul {
-            width: 100%;
-        }
     }
 }
 

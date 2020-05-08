@@ -15,7 +15,6 @@ import Auxx from "../../hoc/Auxx/Auxx";
 import {getBooks} from '../../apiCalls/googleApiBooks/googleBooksApiCalls'
 import withErrorHandler from "../../hoc/withErrorHendler/withErrorHendler";
 import bookNormolize from './utils/booksNormolize';
-import Modal from "../../components/UI/Modal/Modal";
 
 /**
  * HomePageComponent
@@ -33,21 +32,27 @@ const HomePageComponent = () => {
         if(!state.hp) {
             fireBaseCalls.get('/home page state.json')
                 .then(resp => {
-                    stateHandler((prevState) => {
-                        return {
-                            ...prevState,
-                            hp: {
-                                work: resp.data.work,
-                                hobbies: resp.data.hobbies,
-                                weaknessesStrengths: resp.data.weaknessesStrengths
+                    if (resp) {
+                        stateHandler((prevState) => {
+                            return {
+                                ...prevState,
+                                hp: {
+                                    work: resp.data.work,
+                                    hobbies: resp.data.hobbies,
+                                    weaknessesStrengths: resp.data.weaknessesStrengths
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
             );
 
             getBooks()
-                .then(books => stateBooksHandler(bookNormolize(books)));
+                .then(books => {
+                    if(books) {
+                        stateBooksHandler(bookNormolize(books));
+                    }
+                });
         }
     }, [state.hp, stateHandler, stateBooksHandler]);
 
@@ -60,7 +65,7 @@ const HomePageComponent = () => {
                                    category={state.hp.work}
                                    type='profession'
                     />
-                    <HomePageBlock linkDirection='link-left'
+                    <HomePageBlock linkDirection='link-right'
                                    title="hobbies"
                                    category={state.hp.hobbies}
                     />

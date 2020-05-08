@@ -11,7 +11,6 @@ import {CSSTransition} from "react-transition-group";
 import classes from './Modal.module.css';
 import Auxx from "../../../hoc/Auxx/Auxx";
 import Backdrop from "../Backdrop/Backdrop";
-import Context from "../../../Context/context";
 import './modal-animation.css'
 
 /**
@@ -21,11 +20,11 @@ import './modal-animation.css'
  * @return {*} component
  */
 const Modal = React.memo((props) => {
-    const {showModal, onOpenModalHandler} = useContext(Context);
+    console.log(props.show);
     return (
         <Auxx>
             <CSSTransition
-                in={showModal}
+                in={props.show}
                 classNames='show-popup'
                 timeout={500}
             ><section
@@ -37,8 +36,8 @@ const Modal = React.memo((props) => {
             </section>
             </CSSTransition>
             <Backdrop
-                show={showModal}
-                clicked={onOpenModalHandler}
+                show={props.show}
+                clicked={props.modalClosed}
             />
         </Auxx>
     )

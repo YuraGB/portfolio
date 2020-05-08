@@ -70,6 +70,7 @@
         height: 100vh;
         width: 50px;
         transition: width 1s, transform .5s, background-color 0.5s;
+        top: 0;
 
         &:before {
             content: '';

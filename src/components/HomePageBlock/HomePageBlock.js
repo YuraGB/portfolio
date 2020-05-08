@@ -25,10 +25,13 @@ import DescriptionBlock from "../DescriptionBlock/DescriptionBlock";
 const HomePageBlock = ({category, title, type, linkDirection}) => {
     const {state} = useContext(Context);
     const [categoryType, setActiveCategoryName] = useState('');
-    const [showDescription, setActiveBlock] = useState(true);
+    const [blockIsActive, setActive] = useState(false);
     const onHoverHendler = (categoryName) => {
-        console.log(categoryName);
-        setActiveCategoryName(categoryName)};
+        if (!blockIsActive) {
+            setActiveCategoryName(categoryName)
+        }
+    };
+
     const list = Object.keys(category)
         .map(e =>
             <ListItem
@@ -36,7 +39,7 @@ const HomePageBlock = ({category, title, type, linkDirection}) => {
                 link={linkDirection}
                 name={category[e][type] ? category[e][type] : e }
                 onHover={onHoverHendler}
-                clicked={()=>{}}
+                clicked={()=>setActive(true)}
             />
             );
 
@@ -47,24 +50,20 @@ const HomePageBlock = ({category, title, type, linkDirection}) => {
             classNames='home-block'
             timeout={300}
         >
-            <CSSTransition
-                in={!!categoryType}
-                timout={300}
-                classNames='active-block'
-            >
             <InfoBlockComponent
                 onLeave={() => {onHoverHendler('')}}
+                className='block'
                 title={title}>
-
-                    <ul className='main-list'>
+                    <ul className={['main-list', blockIsActive ? 'hide' : ''].join(' ')}
+                        onClick={() => setActive(true)}
+                    >
                         {
                             list
                         }
                     </ul>
-                    <DescriptionBlock type={categoryType}/>
+                    <DescriptionBlock active={blockIsActive} type={categoryType}/>
 
             </InfoBlockComponent>
-            </CSSTransition>
         </CSSTransition>
     )
 };

@@ -121,9 +121,14 @@ const ContactMeComponent = (props) => {
                 date: new Date().getTime()
             })
             .then(resp => {
-                hideApplicationMessage(resp.statusText === 'OK' ?
-                    {text:'The Message was saved', status: "Success" } :
-                    {text:'Something went wrong', status: "Fail" });
+                if (resp) {
+                    hideApplicationMessage(resp.statusText === 'OK' ?
+                        {text: 'The Message was saved', status: "Success"} :
+                        {text: 'Something went wrong', status: "Fail"});
+                } else {
+                    hideApplicationMessage({text: 'Something went wrong', status: "Fail"});
+                }
+
                 showSpinner(false);
                 setValidationStatus(false);
                 updateFieldsHandler(stateFields)

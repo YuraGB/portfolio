@@ -22,68 +22,11 @@
     box-sizing: border-box;
     height: 100%;
     background: bisque;
+    border-radius: 10px;
 }
 
-.active-block {
-    &-enter {
-        &-active {
-            .description {
-                position: absolute;
-                transform: translate3d(-51%, 15px, 0);
-
-                .main-list {
-                    transition: opacity, 0.3s ease-in-out;
-                    opacity: 0;
-                }
-            }
-        }
-
-        &-done {
-            .description {
-                width: 80vw;
-                position: absolute;
-                transform: translate3d(-51%, 15px, 0);
-
-                .main-list {
-                    opacity: 0;
-                    width: 0;
-                    display: none;
-                }
-            }
-        }
-    }
-
-    &-exit {
-        position: relative;
-
-        &-active {
-            .description {
-                position: absolute;
-                width: 100%;
-                transform: translate3d(0, 10, 0);
-
-                .main-list {
-                    transition: opacity, 0.3s ease-in-out;
-                    opacity: 1;
-                }
-            }
-        }
-
-        &-done {
-            opacity: 1;
-
-            .description {
-                width: 100%;
-                position: relative;
-
-                opacity: 1;
-
-                .main-list {
-                    opacity: 1;
-                    width: 50%;
-                    display: inline-block;
-                }
-            }
-        }
-    }
+.hide {
+    opacity: 0;
+    width: 0;
+    display: none;
 }

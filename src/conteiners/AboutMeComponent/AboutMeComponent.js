@@ -28,15 +28,16 @@ const AboutMeComponent = () => {
         if(!state.abMe) {
             fireBaseCalls.get('/comments.json')
                 .then(resp => {
-                    stateHandler((prevState) => {
-                        return {
-                            ...prevState,
-                            abMe: Object.keys(resp.data).map(commentsId => ({
-                                id: commentsId,
-                                commentData: resp.data[commentsId]}))
-                            }
-                        }
-                    );
+                    if (resp) {
+                        stateHandler((prevState) => {
+                            return {
+                                ...prevState,
+                                abMe: Object.keys(resp.data).map(commentsId => ({
+                                    id: commentsId,
+                                    commentData: resp.data[commentsId]
+                                }))
+                        }});
+                    }
                 }
             );
         }

@@ -16,18 +16,23 @@ import config from './config';
  * @return {Promise<unknown>}
  */
 export const getBooks = function () {
-    return new Promise((resolve) => {
-        const {API_KEY, BOOKS_USER_ID, GOOGLE_BOOKS_URL} = config.google_kreds;
-        function start() {
+    try {
+        return new Promise((resolve) => {
+            const {API_KEY, BOOKS_USER_ID, GOOGLE_BOOKS_URL} = config.google_kreds;
+
+            function start() {
+                gapi.client.init({
+                    'key': API_KEY,
+                }).then(function () {
+                    return gapi.client.request({
+                        'path': `${GOOGLE_BOOKS_URL}/${BOOKS_USER_ID}/bookshelves/0/volumes?key=${API_KEY}`,
+                    }).then(resp => resolve(resp.result.items))
+                });
+            }
             /* global gapi */
-            gapi.client.init({
-                'key': API_KEY,
-            }).then(function() {
-                return gapi.client.request({
-                    'path': `${GOOGLE_BOOKS_URL}/${BOOKS_USER_ID}/bookshelves/0/volumes?key=${API_KEY}`,
-                }).then(resp=> resolve(resp.result.items))
-            });
-        }
-        gapi.load('client', start);
-    })
+            gapi.load('client', start);
+        })
+    } catch (e) {
+        console.log(e);
+    }
 };
