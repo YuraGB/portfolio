@@ -1,3 +1,17 @@
-.Description {
+.DescriptionImg {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.description {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.description-text {
+    width: 100%;
+}
+
+.title {
 
 }

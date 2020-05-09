@@ -25,8 +25,10 @@ import DescriptionBlock from "../DescriptionBlock/DescriptionBlock";
 const HomePageBlock = ({category, title, type, linkDirection}) => {
     const {state} = useContext(Context);
     const [categoryType, setActiveCategoryName] = useState('');
+    const [activeCategory, setActiveCategory] = useState(null);
     const [blockIsActive, setActive] = useState(false);
     const onHoverHendler = (categoryName) => {
+        console.log(activeCategory, category);
         if (!blockIsActive) {
             setActiveCategoryName(categoryName)
         }
@@ -55,13 +57,18 @@ const HomePageBlock = ({category, title, type, linkDirection}) => {
                 className='block'
                 title={title}>
                     <ul className={['main-list', blockIsActive ? 'hide' : ''].join(' ')}
-                        onClick={() => setActive(true)}
+                        onClick={() => setActive(false)}
                     >
                         {
                             list
                         }
                     </ul>
-                    <DescriptionBlock active={blockIsActive} type={categoryType}/>
+                    <DescriptionBlock
+                        active={blockIsActive}
+                        activeCategory={activeCategory}
+                        setActiveCategory={setActiveCategory}
+                        type={categoryType}
+                    />
 
             </InfoBlockComponent>
         </CSSTransition>
