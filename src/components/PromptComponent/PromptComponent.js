@@ -40,9 +40,10 @@ const PromptComponent = React.memo(() => {
             in={prompt.show}
             classNames='fade'
             timeout={300}
-        ><span>
-         {component}
-        </span>
+        >
+            <span>
+                {component}
+            </span>
         </CSSTransition>
     )
 });

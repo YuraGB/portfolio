@@ -33,7 +33,12 @@ export default function () {
         }, 5000);
     };
     const promptHendler = (data) => (event) => {
-        const coordinates = mousePos(event);
+        let coordinates = {};
+
+        if (event) {
+            coordinates = mousePos(event);
+        }
+
         clearTimeout(timer);
 
         timer = setTimeout(() => {
