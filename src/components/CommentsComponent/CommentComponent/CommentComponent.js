@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './CommentComponent.module.css'
-z
+
 const CommentComponent = (props) => {
     return (
         <div className={classes.Comment}>
