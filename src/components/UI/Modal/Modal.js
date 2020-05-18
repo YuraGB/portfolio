@@ -44,4 +44,4 @@ const Modal = React.memo((props) => {
     )
 });
 
-export default React.memo(Modal);
+export default Modal;
